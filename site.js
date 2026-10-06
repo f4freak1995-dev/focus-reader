@@ -73,13 +73,9 @@ async function loadRelease() {
     for (const [platform,label] of [['mac','macOS'],['windows','Windows']]) {
       const item=release[platform];
       if(item?.status !== 'published' || typeof item.url !== 'string' || !item.url.startsWith(expectedPrefix) || !/^[a-f0-9]{64}$/.test(item.sha256) || !/^\d+\.\d+\.\d+$/.test(item.version))continue;
-      const slot=document.querySelector(`#${platform}-release`);
-      if(!slot)continue;
-      const link=document.createElement('a');link.className='button primary';link.href=item.url;
-      link.textContent=platform==='windows'?'下载 Windows 安装包':`下载 ${label} ${item.version}`;
-      slot.replaceChildren(link);
-      document.querySelector(`#${platform}-status`).textContent=platform==='mac'?'公开测试版 · 尚未通过 Apple 公证':'公开测试版 · 尚未做 Windows 发布签名';
-      document.querySelector(`#${platform}-hash`).textContent=item.sha256;
+      document.querySelectorAll(`[data-${platform}-download]`).forEach(link => { link.href=item.url; });
+      const hash=document.querySelector(`#${platform}-hash`);
+      if(hash)hash.textContent=item.sha256;
     }
   } catch { /* Static platform information remains readable offline. */ }
 }

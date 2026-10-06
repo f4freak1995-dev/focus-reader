@@ -12,6 +12,12 @@ Focus Reader 的产品展示与发布页面：本地桌面阅读器，包含普�
 
 站点采用静态 HTML/CSS/JavaScript，无分析脚本、远程字体或书籍上传。四种模式的交互是网站示意，不是桌面应用截图或阅读时长模型。
 
+## 给朋友下载安装
+
+分享 [官网下载安装入口](https://f4freak1995-dev.github.io/focus-reader/#download)。Mac 用户点“下载 Mac 安装包”，下载一个完整 DMG，约 90 MB，适用于 M 系列 Mac；Windows 用户点“下载 Windows 安装包”，下载一个 EXE，按安装向导完成。
+
+安装只需三步：双击下载的 DMG → 把 Focus Reader 拖到 Applications（应用程序）→ 从“应用程序”打开。源码 ZIP、许可附件和校验文件都不是安装必需品。首次打开可能受 macOS 拦截：当前测试版尚未通过 Apple 公证，具体提示处理见官网说明。
+
 ## 版权与通知
 
 [版权与使用](copyright.html) · [第三方许可](third-party.html) · [隐私说明](privacy.html)
