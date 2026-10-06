@@ -9,6 +9,17 @@
     "url": "https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.11-testing/Focus.Reader_0.1.11_aarch64-testing.dmg",
     "notarized": false
   },
-  "windows": { "status": "pending-native-validation", "url": null },
-  "crossDeviceSync": { "status": "not-implemented" }
+  "windows": {
+    "version": "0.1.13",
+    "status": "published",
+    "architecture": "x86_64",
+    "sha256": "b033947c052bf451d44a0b71d747041d2342d3bbd970a717b891e685426a95fc",
+    "url": "https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.13-windows-testing/Focus-Reader-0.1.13-Windows-x64-setup.exe",
+    "signed": false,
+    "codeProtection": "obfuscated-reading-core",
+    "libraryEncryption": false
+  },
+  "crossDeviceSync": {
+    "status": "not-implemented"
+  }
 }

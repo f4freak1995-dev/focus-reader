@@ -7,7 +7,7 @@ Focus Reader 的产品展示与发布页面：本地桌面阅读器，包含普�
 ## 当前状态
 
 - macOS：0.1.11 Alpha，Apple Silicon。已构建本地测试包；公开下载是否启用以 [release-manifest.json](release-manifest.json) 为准。尚未通过 Apple 公证。
-- Windows：接入新修复与原生验收中，未在本仓库提供新版安装器。
+- Windows：0.1.13 Alpha，x64。已在安装后的程序验证五种格式、四种阅读模式、冷热文件递送和重启保存；安装器未做 Authenticode 发布签名。下载和 SHA256 见 [release-manifest.json](release-manifest.json)。原创阅读核心使用发布混淆，用户书库未加密，开放词典及许可保持可读取。
 - 跨设备同步：尚未实现，需要同协议的两端更新和真实往返测试。
 
 站点采用静态 HTML/CSS/JavaScript，无分析脚本、远程字体或书籍上传。四种模式的交互是网站示意，不是桌面应用截图或阅读时长模型。

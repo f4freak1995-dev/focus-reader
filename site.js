@@ -68,14 +68,19 @@ async function loadRelease() {
     const response = await fetch('release-manifest.json',{cache:'no-cache'});
     if(!response.ok)return;
     const release = await response.json();
-    const mac = release.mac;
+    if(release.schemaVersion !== 1)return;
     const expectedPrefix='https://github.com/f4freak1995-dev/focus-reader/releases/download/';
-    if(mac?.status !== 'published' || !mac.url?.startsWith(expectedPrefix) || !/^[a-f0-9]{64}$/.test(mac.sha256))return;
-    const link=document.createElement('a');link.className='button primary';link.href=mac.url;
-    link.textContent=`下载 macOS ${mac.version}`;
-    document.querySelector('#mac-release').replaceChildren(link);
-    document.querySelector('#mac-status').textContent='公开测试版 · 尚未通过 Apple 公证';
-    document.querySelector('#mac-hash').textContent=mac.sha256;
-  } catch { /* The static version/platform information remains readable offline. */ }
+    for (const [platform,label] of [['mac','macOS'],['windows','Windows']]) {
+      const item=release[platform];
+      if(item?.status !== 'published' || typeof item.url !== 'string' || !item.url.startsWith(expectedPrefix) || !/^[a-f0-9]{64}$/.test(item.sha256) || !/^\d+\.\d+\.\d+$/.test(item.version))continue;
+      const slot=document.querySelector(`#${platform}-release`);
+      if(!slot)continue;
+      const link=document.createElement('a');link.className='button primary';link.href=item.url;
+      link.textContent=`下载 ${label} ${item.version}`;
+      slot.replaceChildren(link);
+      document.querySelector(`#${platform}-status`).textContent=platform==='mac'?'公开测试版 · 尚未通过 Apple 公证':'公开测试版 · 尚未做 Windows 发布签名';
+      document.querySelector(`#${platform}-hash`).textContent=item.sha256;
+    }
+  } catch { /* Static platform information remains readable offline. */ }
 }
 if(panel)void loadRelease();
