@@ -18,6 +18,8 @@ Focus Reader 的产品展示与发布页面：本地桌面阅读器，包含普�
 
 安装只需三步：双击下载的 DMG → 把 Focus Reader 拖到 Applications（应用程序）→ 从“应用程序”打开。源码 ZIP、许可附件和校验文件都不是安装必需品。首次打开可能受 macOS 拦截：当前测试版尚未通过 Apple 公证，具体提示处理见官网说明。
 
+遇到“Apple 无法检查其是否包含恶意软件”，见下载区的 [Mac 首次打开详细教程](https://f4freak1995-dev.github.io/focus-reader/#mac-open-help)。包含六步操作、系统设置路径、找不到“仍要打开”时的排查，以及与“已损坏”提示的区别；按 Apple 官方说明整理。
+
 ## 版权与通知
 
 [版权与使用](copyright.html) · [第三方许可](third-party.html) · [隐私说明](privacy.html)

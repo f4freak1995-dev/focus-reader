@@ -69,10 +69,32 @@
       <div class="download-heading"><div><p class="eyebrow">DOWNLOAD &amp; INSTALL</p><h2 id="download-title">一个安装包，<br>三步开始阅读。</h2></div><p>直接点下面的绿色按钮。<br>下载完成后，照着三步操作即可。</p></div>
       <article class="download-card download-main">
         <div class="download-intro"><div class="card-top"><span class="platform-icon" aria-hidden="true">⌘</span><span class="pill">0.1.11 · 测试版</span></div><h3>Focus Reader for Mac</h3><p class="platform-detail">适用于 M 系列芯片的 Mac · 约 90 MB</p><p>完整应用已装在这一个文件里，无需另下源码、词典或其他软件。</p><p class="compatibility">不确定芯片？点屏幕左上角  → 关于本机，查看“芯片”。当前 Mac 安装包不适用于 Intel Mac。</p></div>
-        <div class="download-action"><a class="button primary" data-mac-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.11-testing/Focus.Reader_0.1.11_aarch64-testing.dmg">下载 Mac 安装包 <span aria-hidden="true">↓</span></a><p class="download-status" id="mac-status">只需下载这一个 .dmg 文件</p><a class="text-link" href="#install">下载以后怎么安装？</a></div>
+        <div class="download-action"><a class="button primary" data-mac-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.11-testing/Focus.Reader_0.1.11_aarch64-testing.dmg">下载 Mac 安装包 <span aria-hidden="true">↓</span></a><p class="download-status" id="mac-status">只需下载这一个 .dmg 文件</p><a class="text-link" href="#install">下载以后怎么安装？</a><a class="text-link help-shortcut" href="#mac-open-help">提示无法打开？查看详细教程</a></div>
         <div id="install" class="install-guide"><h3>下载后，这样安装</h3><ol class="install-steps"><li><span class="step-number" aria-hidden="true">1</span><h4>打开下载的文件</h4><p>在访达的“下载”文件夹中，双击刚下载的 <strong>.dmg</strong> 文件。</p></li><li><span class="step-number" aria-hidden="true">2</span><h4>拖进“应用程序”</h4><p>在打开的窗口里，把 <strong>Focus Reader</strong> 拖到 <strong>Applications（应用程序）</strong> 文件夹。</p></li><li><span class="step-number" aria-hidden="true">3</span><h4>打开，开始阅读</h4><p>从访达的“应用程序”打开 <strong>Focus Reader</strong>。首次启动会自动建立书库。</p></li></ol>
         <p class="books-tip">以后收书：把书放进 <strong>文稿 → Focus Reader → Books</strong>，启动应用或回到书架时会自动导入。</p></div>
-        <details class="install-help"><summary>首次打开时被 macOS 拦住了？</summary><p>当前是尚未经过 Apple 公证的测试版，系统可能提示无法验证开发者或阻止打开。请先确认文件来自本页的官方下载；有关提示含义和系统处理方式，参阅 <a href="https://support.apple.com/zh-cn/102445" rel="noopener noreferrer">Apple 的打开 App 说明</a>。如果提示“已损坏”或“将损坏你的电脑”，请停止安装并反馈具体提示。</p></details>
+        <details id="mac-open-help" class="install-help" open>
+          <summary>Mac 提示“Apple 无法检查其是否包含恶意软件”？</summary>
+          <div class="open-help-content">
+            <div class="alert-example" aria-label="无法打开提示的文字示意"><img src="icon.svg" alt="" width="40" height="40"><div><span class="example-label">提示示意</span><p>无法打开“Focus Reader”，因为 Apple 无法检查其是否包含恶意软件。</p></div></div>
+            <p class="help-context">当前 Mac 测试版尚未经过 Apple 公证，所以系统可能出现这类提示。<strong>这不表示 Apple 已确认应用安全。</strong> 下面的方法只适用于“无法检查”或“无法验证开发者”；请先确认安装包来自本页，并在你信任该应用、确认文件未被改动时继续。</p>
+            <h4>按顺序操作</h4>
+            <ol class="open-help-steps">
+              <li><strong>先关闭提示。</strong> 点弹窗里的“好”或“完成”。“在访达中显示”只会定位文件，不会打开应用。</li>
+              <li><strong>把应用装进“应用程序”。</strong> 如果还停留在有两个图标的 DMG 窗口，把 Focus Reader 拖到 Applications（应用程序），等复制完成。</li>
+              <li><strong>从“应用程序”尝试打开一次。</strong> 打开访达 → 应用程序，双击 Focus Reader。若再次出现同样提示，关闭它，再做下一步。</li>
+              <li><strong>打开“隐私与安全性”。</strong> 点屏幕左上角  → 系统设置 → 隐私与安全性，向下滚动到“安全性”附近。</li>
+              <li><strong>找到 Focus Reader 的拦截记录。</strong> 确认提示对应的是 Focus Reader，然后点旁边的“仍要打开”（文字可能随系统版本稍有不同）。</li>
+              <li><strong>再次确认“打开”。</strong> 按 macOS 的提示完成确认，再点“打开”。成功后，以后通常可以直接从“应用程序”启动。</li>
+            </ol>
+            <div class="settings-example" aria-label="系统设置路径示意"><span> 系统设置</span><span aria-hidden="true">→</span><span>隐私与安全性</span><span aria-hidden="true">→</span><span>Focus Reader 的提示</span><span class="example-choice">仍要打开</span><small>路径示意，实际界面以你的 macOS 版本为准。</small></div>
+            <div class="help-cases">
+              <div><h4>没有找到“仍要打开”？</h4><p>先确认第 2 步复制已完成，并且第 3 步打开的是“应用程序”里的 Focus Reader。再尝试打开一次，返回“隐私与安全性”查看，并向下滚动。公司或学校管理的 Mac 可能限制此操作，需要联系管理员。</p></div>
+              <div><h4>提示“已损坏”或“将损坏你的电脑”？</h4><p>这是另一类提示，请停止打开，重新从官方下载并反馈完整提示。此教程不适用于这类警告，也不能保证重新下载就能解决。</p></div>
+              <div><h4>提示与芯片或版本不兼容？</h4><p>点  → 关于本机，核对 macOS 版本和芯片。当前 Mac 安装包仅供 M 系列芯片使用，Intel Mac 不能使用这个包。</p></div>
+            </div>
+            <p class="help-reference">步骤依据 <a href="https://support.apple.com/zh-cn/102445" rel="noopener noreferrer">Apple 官方打开 App 说明</a>。仍无法启动时，<a href="https://github.com/f4freak1995-dev/focus-reader/issues/new" rel="noopener noreferrer">反馈启动问题</a>，附上系统版本、芯片和提示文字；截图请只保留错误窗口并遮盖个人信息。</p>
+          </div>
+        </details>
         <details class="checksum"><summary>文件校验与许可（普通安装无需下载这些文件）</summary><code id="mac-hash">bace1c4274bc222390b0d9b862a02354ece5eef63e57f0a3ebb6b524196ef5d7</code><p><a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.11-testing/SHA256SUMS.txt">校验清单</a> · <a href="third-party.html">第三方许可</a> · <a href="copyright.html">版权与使用</a>。校验用于核对文件完整性，不替代签名或公证。</p></details>
       </article>
       <article class="download-card windows-download"><div class="card-top"><span class="platform-icon" aria-hidden="true">⊞</span><span class="pill">0.1.13 · Alpha</span></div><h3>Windows</h3><p class="platform-detail">0.1.13 · Windows 64 位 · 约 49 MB</p><p>只需下载一个安装包，程序和内置词库都在里面。下载后双击打开，按向导安装即可。无需解压。</p><div id="windows-release"><a class="button primary" data-windows-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.13-windows-testing/Focus-Reader-0.1.13-Windows-x64-setup.exe">下载 Windows 安装包</a></div><ol class="windows-install-steps"><li>点击上方按钮，下载一个 .exe 文件。</li><li>在浏览器下载列表或“下载”文件夹中，双击安装包。</li><li>完成安装后，打开 Focus Reader，点击“导入书籍”。</li></ol><p>首次打开自动建立本地书库。下方校验和许可附件无需另行下载即可安装。</p><p class="download-status" id="windows-status">公开测试版 · 尚未做 Windows 发布签名</p><details class="checksum"><summary>校验、许可与技术信息（可选）</summary><p>已验证导入、四种阅读模式与重启保存。原创阅读核心采用发布混淆。需要 WebView2，安装向导可能联网补装。</p><code id="windows-hash">b033947c052bf451d44a0b71d747041d2342d3bbd970a717b891e685426a95fc</code><p><a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.13-windows-testing/SHA256SUMS.txt">下载校验清单</a> · <a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.13-windows-testing/Focus-Reader-0.1.13-Third-Party-Notices.zip">第三方通知</a></p></details></article>
