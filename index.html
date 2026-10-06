@@ -9,6 +9,7 @@
   <meta name="color-scheme" content="light dark">
   <title>Focus Reader · 把注意力留给文字</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <script src="language.js"></script>
   <link rel="stylesheet" href="styles.css">
   <script src="site.js" defer></script>
 </head>
@@ -17,7 +18,7 @@
   <header class="nav wrap">
     <a class="brand" href="./" aria-label="Focus Reader 首页"><img src="icon.svg" alt="" width="34" height="34">Focus Reader</a>
     <nav aria-label="主导航"><a href="#experience">阅读方式</a><a href="#download">下载安装</a><a href="copyright.html">版权</a></nav>
-    <button class="theme" id="theme-toggle" type="button" aria-label="切换深色外观" aria-pressed="false">◐</button>
+    <div class="nav-controls"><div class="language-switch" aria-label="切换网站语言"><a href="?lang=zh" data-language="zh" lang="zh-CN">中文</a><a href="en/?lang=en" data-language="en" lang="en">English</a></div><button class="theme" id="theme-toggle" type="button" aria-label="切换深色外观" aria-pressed="false">◐</button></div>
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">

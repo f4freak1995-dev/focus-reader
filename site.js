@@ -1,12 +1,14 @@
 /* Copyright 2026 Focus Reader project rights holders. See LICENSE.txt.
  * This is a public website demonstration, not the reader's parsing/timing engine. */
 const root = document.documentElement;
+const siteBase = new URL('./', document.currentScript.src);
+const english = root.lang === 'en';
 const themeButton = document.querySelector('#theme-toggle');
 try { if (localStorage.getItem('focus-reader-site-theme') === 'dark') root.dataset.theme = 'dark'; } catch {}
 function themeLabel() {
   const dark = root.dataset.theme === 'dark';
   themeButton?.setAttribute('aria-pressed', String(dark));
-  themeButton?.setAttribute('aria-label', dark ? '切换浅色外观' : '切换深色外观');
+  themeButton?.setAttribute('aria-label', english ? (dark ? 'Switch to light appearance' : 'Switch to dark appearance') : (dark ? '切换浅色外观' : '切换深色外观'));
 }
 themeLabel();
 themeButton?.addEventListener('click', () => {
@@ -18,18 +20,18 @@ themeButton?.addEventListener('click', () => {
 
 const tabs = [...document.querySelectorAll('[role=tab][data-mode]')];
 const panel = document.querySelector('#reading-panel');
-const captions = { normal:'像读纸书一样，按自己的节奏翻页。', color:'柔和色块，辅助辨认原句边界。', arsvp:'词组播放示意；实际候选时长由应用确定。', focus:'在原句里强调当前词，保留上下文。' };
+const captions = english ? {normal:'Turn the pages at your own pace, as you would with a paper book.',color:'Soft colors mark the boundaries of each sentence.',arsvp:'A word-playback illustration. The app calculates actual candidate timings.',focus:'Emphasize the current word in its sentence, keeping the context.'} : { normal:'像读纸书一样，按自己的节奏翻页。', color:'柔和色块，辅助辨认原句边界。', arsvp:'词组播放示意；实际候选时长由应用确定。', focus:'在原句里强调当前词，保留上下文。' };
 const sample = panel?.querySelector('.sample');
 const stage = panel?.querySelector('.word-stage');
 const focusLine = panel?.querySelector('.focus-line');
 const playButton = document.querySelector('#play-demo');
-const words = ['窗外','的','光线','慢慢','移过','书桌。','合上','杂乱','的','念头，','把','目光','放在','眼前','的','一行','文字','上。'];
+const words = english ? ['Light','from','the','window','slowly','crosses','the','desk.','Set','your','scattered','thoughts','aside','and','look','at','the','line','in','front','of','you.'] : ['窗外','的','光线','慢慢','移过','书桌。','合上','杂乱','的','念头，','把','目光','放在','眼前','的','一行','文字','上。'];
 let timer = null, index = 0;
 function pause() {
   if (timer !== null) clearInterval(timer);
   timer = null;
   playButton?.setAttribute('aria-pressed','false');
-  if (playButton) playButton.textContent = '播放示意';
+  if (playButton) playButton.textContent = english ? 'Play demo' : '播放示意';
 }
 function activate(tab) {
   pause();
@@ -56,7 +58,7 @@ tabs.forEach((tab, i) => {
 });
 playButton?.addEventListener('click',()=>{
   if(timer !== null){pause();return;}
-  playButton.textContent='暂停示意';playButton.setAttribute('aria-pressed','true');
+  playButton.textContent=english ? 'Pause demo' : '暂停示意';playButton.setAttribute('aria-pressed','true');
   timer=setInterval(()=>{index=(index+1)%words.length;document.querySelector('#current-word').textContent=words[index];},650);
 });
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
@@ -65,7 +67,7 @@ window.addEventListener('pagehide',pause);
 // Only verified public release assets may enable a download link.
 async function loadRelease() {
   try {
-    const response = await fetch('release-manifest.json',{cache:'no-cache'});
+    const response = await fetch(new URL('release-manifest.json',siteBase),{cache:'no-cache'});
     if(!response.ok)return;
     const release = await response.json();
     if(release.schemaVersion !== 1)return;
