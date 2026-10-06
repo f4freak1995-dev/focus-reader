@@ -76,7 +76,7 @@ async function loadRelease() {
       const slot=document.querySelector(`#${platform}-release`);
       if(!slot)continue;
       const link=document.createElement('a');link.className='button primary';link.href=item.url;
-      link.textContent=`下载 ${label} ${item.version}`;
+      link.textContent=platform==='windows'?'下载 Windows 安装包':`下载 ${label} ${item.version}`;
       slot.replaceChildren(link);
       document.querySelector(`#${platform}-status`).textContent=platform==='mac'?'公开测试版 · 尚未通过 Apple 公证':'公开测试版 · 尚未做 Windows 发布签名';
       document.querySelector(`#${platform}-hash`).textContent=item.sha256;
