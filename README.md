@@ -18,4 +18,6 @@ Focus Reader 的产品展示与发布页面：本地桌面阅读器，包含普�
 
 程序依赖的完整许可与数据来源单独保留；不能把教育部辞典、CC-CEDICT 等第三方材料声明为本项目独占作品。
 
-GitHub Pages 的发布源使用本仓库 `main` 分支根目录。不要上传阅读器的 `src`、`src-tauri`、源码交接 ZIP、个人书库、字体、凭据或调试 source map。安装包应通过经过核对的 Release 资产提供。
+GitHub Pages 的发布源使用 GitHub Actions，由 `.github/workflows/pages.yml` 在 `main` 分支更新时发布。工作流逐项复制已批准的网站文件，不将整个工作区上传为站点；官方 Actions 固定提交 SHA，构建不保存 Git 凭据，部署沿用 `github-pages` 环境与分支限制。
+
+不要上传阅读器的 `src`、`src-tauri`、源码交接 ZIP、个人书库、字体、凭据或调试 source map。安装包应通过经过核对的 Release 资产提供。
