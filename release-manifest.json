@@ -3,10 +3,10 @@
   "updatedAt": "2026-10-06",
   "mac": {
     "version": "0.1.11",
-    "status": "pending-publication",
+    "status": "published",
     "architecture": "aarch64",
     "sha256": "bace1c4274bc222390b0d9b862a02354ece5eef63e57f0a3ebb6b524196ef5d7",
-    "url": null,
+    "url": "https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.11-testing/Focus.Reader_0.1.11_aarch64-testing.dmg",
     "notarized": false
   },
   "windows": { "status": "pending-native-validation", "url": null },
