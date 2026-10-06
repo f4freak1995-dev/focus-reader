@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-06",
+  "mac": {
+    "version": "0.1.11",
+    "status": "pending-publication",
+    "architecture": "aarch64",
+    "sha256": "bace1c4274bc222390b0d9b862a02354ece5eef63e57f0a3ebb6b524196ef5d7",
+    "url": null,
+    "notarized": false
+  },
+  "windows": { "status": "pending-native-validation", "url": null },
+  "crossDeviceSync": { "status": "not-implemented" }
+}

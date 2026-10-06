@@ -1,0 +1,16 @@
+.DS_Store
+*.map
+*.epub
+*.pdf
+*.dmg
+*.exe
+*.zip
+*.sqlite*
+.env*
+node_modules/
+src/
+src-tauri/
+originals/
+documents/
+.tools/
+preview-*.png
