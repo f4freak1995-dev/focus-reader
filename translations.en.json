@@ -225,5 +225,10 @@
   "依赖许可汇编": "Dependency license collection",
   "正式发布资产还需附上该构建实际使用的许可及署名。应用使用系统安装的阅读字体；用户自行导入的书籍和字体不属于应用分发内容。本网站使用系统字体和自行编写的示例文字。": "Release assets must include the licenses and attribution for materials actually used in that build. The app uses system-installed reading fonts. User-imported books and fonts are not included in app distribution. This website uses system fonts and original sample text.",
   "开放许可不被“保护措施”覆盖": "Protection measures do not override open licenses",
-  "原创源码可以保持私有，但不能以此取消第三方许可赋予的复制、改编或再分发权利。CC BY-SA 的相关改编继续按相同许可提供；CC BY-ND 内容不能分发不允许的改作版本。版权声明与技术措施都需要保留这些例外。": "Original source may remain private, but this does not cancel copying, adaptation or redistribution rights granted by third-party licenses. Relevant CC BY-SA adaptations remain under the same license; CC BY-ND content must not be distributed as an unauthorized adaptation. Copyright notices and technical measures must preserve these exceptions."
+  "原创源码可以保持私有，但不能以此取消第三方许可赋予的复制、改编或再分发权利。CC BY-SA 的相关改编继续按相同许可提供；CC BY-ND 内容不能分发不允许的改作版本。版权声明与技术措施都需要保留这些例外。": "Original source may remain private, but this does not cancel copying, adaptation or redistribution rights granted by third-party licenses. Relevant CC BY-SA adaptations remain under the same license; CC BY-ND content must not be distributed as an unauthorized adaptation. Copyright notices and technical measures must preserve these exceptions.",
+  "0.1.26 · Alpha": "0.1.26 · Alpha",
+  "0.1.26 · Windows 64 位 · 约 60 MB": "0.1.26 · Windows 64-bit · About 60 MB",
+  "Windows 0.1.26：新增英文 ARSVP、中文拼音、脚注跳转和页码；优化焦点跟读性能，保留行内放大滚动效果。": "Windows 0.1.26: English ARSVP, Chinese pinyin, footnote navigation and page numbers. Faster focus rendering preserves the inline magnification and scrolling effect.",
+  "Focus Reader，本地桌面阅读器。普通阅读、逐句色块、中英文 ARSVP 与焦点跟读，让阅读保持自己的节奏。": "Focus Reader, a local desktop reader. Read normally, follow sentence colors, or try Chinese and English ARSVP and focus reading at your own pace.",
+  "中文分词、英文词形、姓名修补与候选显示时长，支持个人难词记录。时长仍是可校准的工程参数。": "Chinese segmentation, English word forms, name repair and candidate display durations, with personal difficult-word records. Timings remain adjustable engineering parameters."
 }

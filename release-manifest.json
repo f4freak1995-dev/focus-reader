@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-06",
+  "updatedAt": "2026-10-07",
   "mac": {
     "version": "0.1.11",
     "status": "published",
@@ -10,14 +10,15 @@
     "notarized": false
   },
   "windows": {
-    "version": "0.1.13",
+    "version": "0.1.26",
     "status": "published",
     "architecture": "x86_64",
-    "sha256": "b033947c052bf451d44a0b71d747041d2342d3bbd970a717b891e685426a95fc",
-    "url": "https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.13-windows-testing/Focus-Reader-0.1.13-Windows-x64-setup.exe",
+    "sha256": "3292bf6b1c4076c83f12033c0206b2b0a0763d511f36365bc3a65af08dbccffe",
+    "url": "https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-windows/Focus-Reader-0.1.26-Windows-x64-setup.exe",
     "signed": false,
     "codeProtection": "obfuscated-reading-core",
-    "libraryEncryption": false
+    "libraryEncryption": false,
+    "bytes": 60287233
   },
   "crossDeviceSync": {
     "status": "not-implemented"

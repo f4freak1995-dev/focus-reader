@@ -51,9 +51,9 @@ React / TypeScript / Vite / Tauri、PDF.js、JSZip、DOMPurify、Marked、Lucide
 
 原始下载网址、大小和 SHA256 见 `sources-manifest.json`；完整构建研究资产与脚本保留于工作区 `audit/2026-10-05/chinese-rsvp-research`。正式对外发行前还需按实际分发包复核依赖和数据通知；本轮没有公开发布。
 
-## 长科学术语索引（0.1.7）
+## 科学术语索引（0.1.17 扩展）
 
-`technical-forms.json` / `technical-terms-provenance.json` 从已署名的 CC-CEDICT 提取完整长词形，共 61 形式（含两个单独标记的用户请求写法别名）。保留 CC-CEDICT 贡献者署名及 CC BY-SA 4.0 条件。逐条来源行和可重建脚本 `scripts/build-technical-terms.py` 随源码保存；未改写原释义。此索引不提供或宣称词语实测阅读时长。
+`technical-forms.json` / `technical-terms-provenance.json` 从已署名的 CC-CEDICT 提取完整长词形及人工复核的短科学概念，共 121 形式（含两个单独标记的用户请求写法别名）。保留 CC-CEDICT 贡献者署名及 CC BY-SA 4.0 条件。逐条来源行和可重建脚本 `scripts/build-technical-terms.py` 随源码保存；未改写原释义。此索引不提供或宣称词语实测阅读时长。
 
 ## 领域词库（0.1.8）
 
@@ -64,3 +64,16 @@ React / TypeScript / Vite / Tauri、PDF.js、JSZip、DOMPurify、Marked、Lucide
 - Wikidata 贡献者，CC0 1.0，https://www.wikidata.org/wiki/Wikidata:Licensing 。七个实体的中文标签/别名及短简介（Q1299、Q2306、Q11649、Q15862、Q44190、Q267932、Q38066），不是整部音乐或哲学百科；实体 ID、revision 和原 JSON 快照随数据保留。中文别名用于精确识别，原书文字不改写。批量查询服务返回 429，未声称完成全量导入。
 
 只将已有 jieba / CC-CEDICT 独立佐证的 THUOCL 长词设为强制整词，其他长词仅查询；短词使用既有受约束修补规则。重建脚本 `scripts/build-domain-corpus.py` 默认验证来源锁文件，未使用商业词典扫描件或无许可网页集合。
+# English adaptive resources (0.1.14)
+
+Open English WordNet 2025+ by the Open English Wordnet team, derived from Princeton WordNet: CC BY 4.0, original Princeton notices retained. Meanings, headwords, parts of speech and explicit forms are imported into the independent English SQLite resource. See english-licenses/EWN-LICENSE.md and WNDB-LICENSE.txt.
+
+CMU Pronouncing Dictionary, Copyright Carnegie Mellon University: pronunciations and syllable counts, with permitted redistribution under its complete license at english-licenses/CMUDICT-LICENSE.txt. Variant pronunciations are reduced to the shortest syllable candidate; they are not measured reading times.
+
+wordfreq 3.1.1, Copyright Robyn Speer: English public word frequencies only. Data CC BY-SA 4.0; tool code Apache 2.0. Full author and upstream attribution: english-licenses/WORDFREQ-NOTICE.md and WORDFREQ-README.md; license text CC-BY-SA-4.0.txt and WORDFREQ-LICENSE.txt. Frequency data is a usage snapshot through approximately 2021, not personal familiarity.
+
+The combined english-adaptive.sqlite3 data resource and its derived timing candidates are provided under CC BY-SA 4.0; application code is separately licensed. Changes: normalized query keys, selected one CMU pronunciation per key, converted Zipf bins, retained separate senses and forms, added unvalidated engineering duration candidates. Versions, source URLs, hashes and exact counts: english-sources-manifest.json. Rebuild script: scripts/build-english-corpus.py. No source text from private books is part of these resources.
+
+## 拼音补充：Unicode Unihan 17.0.0
+
+Unicode, Inc.，Unicode License V3（完整许可见 `unicode-license.txt`）。来源 https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip ，属性 kMandarin、kHanyuPinlu、kHanyuPinyin；通过 `scripts/build-pinyin.py` 提取、按来源顺序去重，保留单字多音候选。版本、校验及条数见 `pinyin-sources-manifest.json`。不把单字拼接当成词语正确读音，不用于改变分词或阅读时间。词级拼音继续来自已有 CC-CEDICT/教育部原词条，保留各自来源与许可。
