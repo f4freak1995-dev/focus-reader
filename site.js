@@ -27,7 +27,7 @@ const focusLine = panel?.querySelector('.focus-line');
 const playButton = document.querySelector('#play-demo');
 // Each language uses one attributed literary sample across all four tabs.
 // No reader dictionary, private timing engine, or book content is loaded here.
-const chineseWords = ["我", "冒", "了", "严寒，", "回到", "相隔", "二千余里，", "别", "了", "二十余年", "的", "故乡", "去。", "时候", "既然", "是", "深冬；", "渐近", "故乡", "时，", "天气", "又", "阴晦", "了，", "冷风", "吹进", "船舱", "中，", "呜呜", "的", "响，", "从", "篷隙", "向外", "一望，", "苍黄", "的", "天底下，", "远近", "横着", "几个", "萧索", "的", "荒村，", "没有", "一些", "活气。", "我", "的", "心", "禁不住", "悲凉", "起来", "了。"];
+const chineseWords = ["我的", "故事", "总是", "在", "夏天", "开始", "的。", "夏天", "在", "我", "看来", "是", "个", "危险", "的", "季节，", "炎热", "的", "天气", "使", "人群", "比", "其他", "季节", "裸露", "得", "多，", "因此", "很难", "掩饰", "欲望。"];
 if (sample && english) {
   [...sample.querySelectorAll(':scope > span')].slice(1).forEach(span => { if(!/\s$/.test(span.previousSibling?.textContent || '')) span.before(document.createTextNode(' ')); });
 }

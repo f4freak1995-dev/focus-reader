@@ -80,7 +80,7 @@ Unicode, Inc.，Unicode License V3（完整许可见 `unicode-license.txt`）。
 
 ## 官网文学阅读示例（2026-10-07）
 
-- 中文：鲁迅《故乡》（1921）开头三句，传统字转简体。原作属于公有领域，署名保留；未使用现代译文、编者注释或整本扫描版。原文与版本信息：<https://zh.wikisource.org/wiki/%E6%95%85%E9%84%89>。
+- 中文：王朔《动物凶猛》，关于夏天的两句短节选，共54字符。原作版权归原权利人；本项目不声明其为公版，不提供小说全文或电影台词。书籍信息与作者、出版社记录：<https://opac.uibe.edu.cn/opac/book/7332062c96f7b9ac495d5353db7b7476>。
 - 英文：Douglas Adams, *The Hitchhiker's Guide to the Galaxy* (1979)，手动控制场景的极短对话引句（共79字符含空格与引号）。原作版权归原权利人，引用不意味着本项目拥有其版权或获得全文再分发许可。书籍介绍：<https://penguinrandomhousesecondaryeducation.com/book/?isbn=9780345418913>。网站只包含这两句短引文，不提供书籍下载或私有电子书文件。
 
 中文与英文采用不同书籍，是本地化的编辑示例，互相不构成翻译。四模式播放为交互示意，不加载客户端私有词库或真实时长公式。

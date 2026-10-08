@@ -15,7 +15,7 @@ ASSETS = {'styles.css', 'site.js', 'language.js', 'icon.svg', 'LICENSE.txt',
           'THIRD_PARTY_NOTICES.md', 'DEPENDENCY_LICENSES.txt'}
 CJK = re.compile(r'[\u3400-\u9fff]')
 
-# Editorial examples differ by language; these are not translations of Lu Xun.
+# Editorial examples differ by language; they are not translations of each other.
 # Only the brief two-line dialogue is quoted, not the surrounding passage.
 ENGLISH_SAMPLE = {
     'title': "The Hitchhiker's Guide to the Galaxy",
