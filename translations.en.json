@@ -230,5 +230,8 @@
   "0.1.26 · Windows 64 位 · 约 60 MB": "0.1.26 · Windows 64-bit · About 60 MB",
   "Windows 0.1.26：新增英文 ARSVP、中文拼音、脚注跳转和页码；优化焦点跟读性能，保留行内放大滚动效果。": "Windows 0.1.26: English ARSVP, Chinese pinyin, footnote navigation and page numbers. Faster focus rendering preserves the inline magnification and scrolling effect.",
   "Focus Reader，本地桌面阅读器。普通阅读、逐句色块、中英文 ARSVP 与焦点跟读，让阅读保持自己的节奏。": "Focus Reader, a local desktop reader. Read normally, follow sentence colors, or try Chinese and English ARSVP and focus reading at your own pace.",
-  "中文分词、英文词形、姓名修补与候选显示时长，支持个人难词记录。时长仍是可校准的工程参数。": "Chinese segmentation, English word forms, name repair and candidate display durations, with personal difficult-word records. Timings remain adjustable engineering parameters."
+  "中文分词、英文词形、姓名修补与候选显示时长，支持个人难词记录。时长仍是可校准的工程参数。": "Chinese segmentation, English word forms, name repair and candidate display durations, with personal difficult-word records. Timings remain adjustable engineering parameters.",
+  "0.1.27 · Windows 64 位 · 约 60 MB": "0.1.27 · Windows 64-bit · About 60 MB",
+  "Windows 0.1.27：新增英文 ARSVP、中文拼音、脚注跳转和页码；优化焦点跟读性能，保留行内放大滚动效果。": "Windows 0.1.27: English ARSVP, Chinese pinyin, footnote navigation and page numbers. Faster focus rendering preserves the inline magnification and scrolling effect.",
+  "Windows 0.1.27：新增首次使用引导与双语示例；优化焦点空间和快捷键，保留内置词典、拼音、脚注与页码。": "Windows 0.1.27 adds optional onboarding and bilingual samples, improves focus-reading space and shortcuts, and retains offline dictionaries, pinyin, footnotes, and page numbers."
 }
