@@ -25,9 +25,9 @@ const sample = panel?.querySelector('.sample');
 const stage = panel?.querySelector('.word-stage');
 const focusLine = panel?.querySelector('.focus-line');
 const playButton = document.querySelector('#play-demo');
-// This lightweight illustration uses the same sample across all four tabs.
+// Each language uses one attributed literary sample across all four tabs.
 // No reader dictionary, private timing engine, or book content is loaded here.
-const chineseWords = ['窗外','的','光线','慢慢','移过','书桌。','合上','杂乱','的','念头，','把','目光','放在','眼前','的','一行','文字','上。','不必','赶到','下一页，','先','让','这一句，','在','心里','停留','片刻。'];
+const chineseWords = ["我", "冒", "了", "严寒，", "回到", "相隔", "二千余里，", "别", "了", "二十余年", "的", "故乡", "去。", "时候", "既然", "是", "深冬；", "渐近", "故乡", "时，", "天气", "又", "阴晦", "了，", "冷风", "吹进", "船舱", "中，", "呜呜", "的", "响，", "从", "篷隙", "向外", "一望，", "苍黄", "的", "天底下，", "远近", "横着", "几个", "萧索", "的", "荒村，", "没有", "一些", "活气。", "我", "的", "心", "禁不住", "悲凉", "起来", "了。"];
 if (sample && english) {
   [...sample.querySelectorAll(':scope > span')].slice(1).forEach(span => { if(!/\s$/.test(span.previousSibling?.textContent || '')) span.before(document.createTextNode(' ')); });
 }

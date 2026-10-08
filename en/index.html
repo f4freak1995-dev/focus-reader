@@ -36,7 +36,7 @@
       <div class="reader-demo" aria-label="Interactive reading illustration">
         <div class="demo-top"><span><i class="window-dot"></i><i class="window-dot"></i><i class="window-dot"></i></span><span>Focus Reader</span><span class="demo-top-right">Reading illustration</span></div>
         <div class="demo-inner">
-          <div class="demo-meta"><span>A quiet moment</span><span>Original reading sample</span></div>
+          <div class="demo-meta"><span data-sample-slot="author">Douglas Adams</span><a data-sample-slot="source" href="https://penguinrandomhousesecondaryeducation.com/book/?isbn=9780345418913">About the book</a></div>
           <div class="tabs" role="tablist" aria-label="Explore four reading modes">
             <button id="tab-normal" role="tab" aria-selected="true" aria-controls="reading-panel" tabindex="0" data-mode="normal">Normal</button>
             <button id="tab-color" role="tab" aria-selected="false" aria-controls="reading-panel" tabindex="-1" data-mode="color">Color</button>
@@ -44,14 +44,14 @@
             <button id="tab-focus" role="tab" aria-selected="false" aria-controls="reading-panel" tabindex="-1" data-mode="focus">Focus</button>
           </div>
           <div id="reading-panel" class="page-text normal" role="tabpanel" aria-labelledby="tab-normal" tabindex="0">
-            <p class="chapter-label">CHAPTER ONE / A MOMENT OF QUIET</p>
-            <h2>Slow down. Read closely.</h2>
-            <p class="sample"><span class="s1">Light from the window slowly crosses the desk. </span> <span class="s2">Set your scattered thoughts aside and look at the line in front of you. </span> <span class="s3">There is no need to hurry to the next page. Let this sentence stay with you for a moment.</span></p>
-            <div class="word-stage" hidden><span class="word-label">CURRENT WORD</span><strong id="current-word">Light</strong><span class="word-context">Look at the line in front of you.</span></div>
+            <p class="chapter-label" data-sample-slot="edition">1979 · Brief quotation</p>
+            <h2 data-sample-slot="title">The Hitchhiker's Guide to the Galaxy</h2>
+            <p class="sample" data-sample-slot="text"><span class="s1">"OK computer, I want full manual control now."</span> <span class="s2">"You got it," said the computer.</span></p>
+            <div class="word-stage" hidden><span class="word-label">CURRENT WORD</span><strong id="current-word" data-sample-slot="firstWord">"OK</strong></div>
             <div class="focus-line" hidden></div>
             <div class="page-bottom"><span id="mode-caption" aria-live="polite">Turn the pages at your own pace, as you would with a paper book.</span><button id="play-demo" class="play" type="button" hidden aria-pressed="false">Play demo</button></div>
           </div>
-          <div class="demo-progress"><span class="progress-track" aria-hidden="true"><svg viewbox="0 0 1000 4" preserveaspectratio="none"><rect width="1000" height="4" class="progress-background"/><rect id="demo-progress-fill" width="36" height="4"/></svg></span><span id="demo-location">Demo group 1 / 28</span></div>
+          <div class="demo-progress"><span class="progress-track" aria-hidden="true"><svg viewbox="0 0 1000 4" preserveaspectratio="none"><rect width="1000" height="4" class="progress-background"/><rect id="demo-progress-fill" width="18" height="4"/></svg></span><span id="demo-location" data-sample-slot="progress">Demo group 1 / 14</span></div>
         </div>
         <p class="demo-disclaimer">An interactive illustration, not an app screenshot. Demo intervals are not measured reading times.</p>
       </div>

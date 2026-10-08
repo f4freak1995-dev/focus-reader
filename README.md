@@ -50,3 +50,9 @@ GitHub Pages 的发布源使用 GitHub Actions，由 `.github/workflows/pages.ym
 Edge 本地验收37组通过：中英文在320/390/780/1440px的首页及三种法律页面、下载版本/哈希、四模式高度、播放/暂停/键盘切换、安装深链接、无JavaScript、系统提示、减少动态效果与存储拒绝。补充4项通过：焦点词在正文滚动区可见、页面隐藏暂停、请求仅同源、关键浅色文案/按钮对比度至少5.71:1。截图已人工检查；完整证据与改前回滚文件位于工作区 `../audit/2026-10-07/website-design-0.1.27`。这不是原生客户端或Mac本机验收；不改变发布包、manifest、私有代码或真实书库。
 
 公共版本信息接口仍为 `/release-manifest.json`（schemaVersion1）；这是静态发布元数据，不提供账户、书库上传或同步API。
+
+### 文学阅读示例
+
+2026-10-07更新：中文使用鲁迅《故乡》开头，英文使用Douglas Adams《The Hitchhiker's Guide to the Galaxy》中“OK computer”的手动控制短对话；作者和作品信息在阅读卡内显示。书籍版权/来源见THIRD_PARTY_NOTICES.md。不同语言选择不同作品，不把它们误写成互译文本。
+
+中文正文在index.html，中文示意分词在site.js（54组）；英文局部内容在scripts/build-english.py的ENGLISH_SAMPLE（14词，79字符短引文），通过data-sample-slot覆盖阅读卡，通用翻译词表保留正常词义。修改正文需检查分词拼接能还原同一段文字；四种模式共用原文，模式切换暂停。本次37组既有网页回归及6组示例专项通过；专项覆盖中英文320/390/1440px、出处、首末词、单层原文、稳定容器和暂停位置保持。

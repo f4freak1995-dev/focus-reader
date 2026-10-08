@@ -15,6 +15,19 @@ ASSETS = {'styles.css', 'site.js', 'language.js', 'icon.svg', 'LICENSE.txt',
           'THIRD_PARTY_NOTICES.md', 'DEPENDENCY_LICENSES.txt'}
 CJK = re.compile(r'[\u3400-\u9fff]')
 
+# Editorial examples differ by language; these are not translations of Lu Xun.
+# Only the brief two-line dialogue is quoted, not the surrounding passage.
+ENGLISH_SAMPLE = {
+    'title': "The Hitchhiker's Guide to the Galaxy",
+    'author': 'Douglas Adams',
+    'edition': '1979 · Brief quotation',
+    'source': 'About the book',
+    'source_url': 'https://penguinrandomhousesecondaryeducation.com/book/?isbn=9780345418913',
+    'text': ('\"OK computer, I want full manual control now.\"', '\"You got it,\" said the computer.'),
+    'firstWord': '\"OK',
+    'progress': 'Demo group 1 / 14',
+}
+
 def translate(value):
     key = value.strip()
     if key in TRANSLATIONS:
@@ -30,13 +43,16 @@ class EnglishPage(HTMLParser):
         super().__init__(convert_charrefs=False)
         self.output = []
         self.name = name
+        self.sample_depth = 0
 
     def start(self, tag, attrs, close):
         translated = []
         language = dict(attrs).get('data-language')
+        slot = dict(attrs).get('data-sample-slot')
         for key, value in attrs:
             if value is not None:
-                if tag == 'html' and key == 'lang': value = 'en'
+                if slot == 'source' and key == 'href': value = ENGLISH_SAMPLE['source_url']
+                elif tag == 'html' and key == 'lang': value = 'en'
                 elif key == 'href' and language:
                     value = ('../' if language == 'zh' else '') + self.name + '?lang=' + language
                 elif key in ('aria-label', 'title', 'alt') or (tag == 'meta' and key == 'content'):
@@ -47,12 +63,38 @@ class EnglishPage(HTMLParser):
             translated.append(key if value is None else f'{key}="{escape(value, quote=True)}"')
         self.output.append('<' + tag + (' ' + ' '.join(translated) if translated else '') + close)
 
-    def handle_starttag(self, tag, attrs): self.start(tag, attrs, '>')
-    def handle_startendtag(self, tag, attrs): self.start(tag, attrs, '/>')
-    def handle_endtag(self, tag): self.output.append(f'</{tag}>')
-    def handle_data(self, value): self.output.append(escape(translate(value), quote=False))
-    def handle_entityref(self, name): self.output.append(f'&{name};')
-    def handle_charref(self, name): self.output.append(f'&#{name};')
+    def handle_starttag(self, tag, attrs):
+        if self.sample_depth:
+            self.sample_depth += 1
+            return
+        self.start(tag, attrs, '>')
+        slot = dict(attrs).get('data-sample-slot')
+        if slot:
+            if slot == 'text':
+                value = ' '.join(f'<span class="s{n + 1}">{escape(sentence, quote=False)}</span>'
+                                 for n, sentence in enumerate(ENGLISH_SAMPLE[slot]))
+            else:
+                value = escape(ENGLISH_SAMPLE[slot], quote=False)
+            self.output.append(value)
+            self.sample_depth = 1
+
+    def handle_startendtag(self, tag, attrs):
+        if not self.sample_depth: self.start(tag, attrs, '/>')
+
+    def handle_endtag(self, tag):
+        if self.sample_depth:
+            self.sample_depth -= 1
+            if self.sample_depth: return
+        self.output.append(f'</{tag}>')
+
+    def handle_data(self, value):
+        if not self.sample_depth: self.output.append(escape(translate(value), quote=False))
+
+    def handle_entityref(self, name):
+        if not self.sample_depth: self.output.append(f'&{name};')
+
+    def handle_charref(self, name):
+        if not self.sample_depth: self.output.append(f'&#{name};')
     def handle_decl(self, decl): self.output.append(f'<!{decl}>')
     def handle_comment(self, text): self.output.append(f'<!--{text}-->')
 

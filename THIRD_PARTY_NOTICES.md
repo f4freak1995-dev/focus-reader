@@ -77,3 +77,10 @@ The combined english-adaptive.sqlite3 data resource and its derived timing candi
 ## 拼音补充：Unicode Unihan 17.0.0
 
 Unicode, Inc.，Unicode License V3（完整许可见 `unicode-license.txt`）。来源 https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip ，属性 kMandarin、kHanyuPinlu、kHanyuPinyin；通过 `scripts/build-pinyin.py` 提取、按来源顺序去重，保留单字多音候选。版本、校验及条数见 `pinyin-sources-manifest.json`。不把单字拼接当成词语正确读音，不用于改变分词或阅读时间。词级拼音继续来自已有 CC-CEDICT/教育部原词条，保留各自来源与许可。
+
+## 官网文学阅读示例（2026-10-07）
+
+- 中文：鲁迅《故乡》（1921）开头三句，传统字转简体。原作属于公有领域，署名保留；未使用现代译文、编者注释或整本扫描版。原文与版本信息：<https://zh.wikisource.org/wiki/%E6%95%85%E9%84%89>。
+- 英文：Douglas Adams, *The Hitchhiker's Guide to the Galaxy* (1979)，手动控制场景的极短对话引句（共79字符含空格与引号）。原作版权归原权利人，引用不意味着本项目拥有其版权或获得全文再分发许可。书籍介绍：<https://penguinrandomhousesecondaryeducation.com/book/?isbn=9780345418913>。网站只包含这两句短引文，不提供书籍下载或私有电子书文件。
+
+中文与英文采用不同书籍，是本地化的编辑示例，互相不构成翻译。四模式播放为交互示意，不加载客户端私有词库或真实时长公式。

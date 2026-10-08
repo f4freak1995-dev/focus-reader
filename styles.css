@@ -1290,3 +1290,7 @@ summary {
   min-width:44px;
   min-height:44px
 }
+
+/* Literary attribution is separate from the shared reading sample. */
+.demo-meta {align-items:center;flex-wrap:wrap;}
+.demo-meta a {text-decoration:underline;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center;}
