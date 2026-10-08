@@ -1,7 +1,8 @@
 /* Copyright 2026 Focus Reader project rights holders. See LICENSE.txt.
  * This is a public website demonstration, not the reader's parsing/timing engine. */
 const root = document.documentElement;
-const siteBase = new URL('./', document.currentScript.src);
+const scriptUrl = new URL(document.currentScript.src);
+const siteBase = new URL(scriptUrl.pathname.includes('/assets/') ? '../' : './', scriptUrl);
 const english = root.lang === 'en';
 const themeButton = document.querySelector('#theme-toggle');
 try { if (localStorage.getItem('focus-reader-site-theme') === 'dark') root.dataset.theme = 'dark'; } catch {}

@@ -29,12 +29,23 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          python3 scripts/build-english.py
           mkdir -p _site
           for file in index.html styles.css site.js language.js icon.svg copyright.html third-party.html privacy.html release-manifest.json README.md LICENSE.txt THIRD_PARTY_NOTICES.md DEPENDENCY_LICENSES.txt .nojekyll en/index.html en/copyright.html en/third-party.html en/privacy.html; do
             test -f "$file"
             test ! -L "$file"
             mkdir -p "_site/$(dirname "$file")"
             cp "$file" "_site/$file"
+          done
+          mkdir -p _site/assets
+          for file in site.js language.js styles.css; do
+            stem="${file%.*}"
+            suffix="${file##*.}"
+            version="$(sha256sum "$file" | cut -c1-12)"
+            asset="assets/$stem.$version.$suffix"
+            test -f "$asset"
+            test ! -L "$asset"
+            cp "$asset" "_site/$asset"
           done
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0

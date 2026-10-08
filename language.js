@@ -1,6 +1,7 @@
 /* Website language only. No location lookup, tracking or translation service. */
 (() => {
-  const base = new URL('./', document.currentScript.src);
+  const scriptUrl = new URL(document.currentScript.src);
+  const base = new URL(scriptUrl.pathname.includes('/assets/') ? '../' : './', scriptUrl);
   const pages = new Set(['index.html', 'privacy.html', 'copyright.html', 'third-party.html']);
   const url = new URL(location.href);
   const filename = url.pathname.split('/').pop() || 'index.html';

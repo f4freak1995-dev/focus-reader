@@ -8,6 +8,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import json
 import re
+import hashlib
 
 ROOT = Path(__file__).resolve().parent.parent
 TRANSLATIONS = json.loads((ROOT / 'translations.en.json').read_text(encoding='utf-8'))
@@ -17,6 +18,35 @@ CJK = re.compile(r'[\u3400-\u9fff]')
 
 # Localized editorial excerpts are independent of the UI translation table.
 ENGLISH_SAMPLE = json.loads((ROOT / 'scripts' / 'english-reading-sample.json').read_text(encoding='utf-8'))
+
+VERSIONED_FILES = ('site.js', 'language.js', 'styles.css')
+
+def canonical_asset(value):
+    """Recognize only this site's three local versioned JS/CSS resources."""
+    match = re.fullmatch(r'(?:\.\./)?(?:assets/)?(site|language|styles)(?:\.[a-f0-9]{12})?\.(js|css)', value)
+    if match:
+        filename = match[1] + '.' + match[2]
+        if filename in VERSIONED_FILES: return filename
+    return value
+
+def prepare_assets():
+    directory = ROOT / 'assets'
+    directory.mkdir(exist_ok=True)
+    result = {}
+    for filename in VERSIONED_FILES:
+        content = (ROOT / filename).read_text(encoding='utf-8').replace('\r\n', '\n').encode('utf-8')
+        stem, suffix = filename.rsplit('.', 1)
+        version = hashlib.sha256(content).hexdigest()[:12]
+        target = f'assets/{stem}.{version}.{suffix}'
+        (ROOT / target).write_bytes(content)
+        result[filename] = target
+    return result
+
+def version_links(source, versions):
+    def replace(match):
+        filename = canonical_asset(match[2])
+        return match[1] + versions.get(filename, match[2]) + match[3]
+    return re.sub(r'((?:src|href)=")([^"]+)(")', replace, source)
 
 
 def translate(value):
@@ -48,6 +78,8 @@ class EnglishPage(HTMLParser):
                     value = ('../' if language == 'zh' else '') + self.name + '?lang=' + language
                 elif key in ('aria-label', 'title', 'alt') or (tag == 'meta' and key == 'content'):
                     value = translate(value)
+                elif key in ('src', 'href') and canonical_asset(value) in VERSIONED_FILES:
+                    value = '../' + self.versions[canonical_asset(value)]
                 elif key in ('src', 'href') and value in ASSETS: value = '../' + value
                 elif key == 'href' and value == 'https://support.apple.com/zh-cn/102445':
                     value = 'https://support.apple.com/en-us/102445'
@@ -98,12 +130,16 @@ class EnglishPage(HTMLParser):
     def handle_comment(self, text): self.output.append(f'<!--{text}-->')
 
 def main():
+    versions = prepare_assets()
     (ROOT / 'en').mkdir(exist_ok=True)
     for name in ('index.html', 'privacy.html', 'copyright.html', 'third-party.html'):
+        source = version_links((ROOT / name).read_text(encoding='utf-8'), versions)
+        (ROOT / name).write_text(source, encoding='utf-8', newline='\n')
         page = EnglishPage(name)
-        page.feed((ROOT / name).read_text(encoding='utf-8'))
+        page.versions = versions
+        page.feed(source)
         content = ''.join(page.output)
-        (ROOT / 'en' / name).write_text(content, encoding='utf-8')
+        (ROOT / 'en' / name).write_text(content, encoding='utf-8', newline='\n')
         print(f'Generated en/{name}')
 
 if __name__ == '__main__': main()

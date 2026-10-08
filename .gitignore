@@ -14,3 +14,6 @@ originals/
 documents/
 .tools/
 preview-*.png
+
+# Generated content-addressed website resources.
+assets/
