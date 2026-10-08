@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-07",
+  "updatedAt": "2026-10-08",
   "mac": {
-    "version": "0.1.26",
+    "version": "0.1.28",
     "status": "published",
     "architecture": "aarch64",
-    "sha256": "46694acb97533a082efba105bd6e0d83851840b0fd268b4d8a2ce6a891030dfa",
-    "url": "https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/Focus-Reader-0.1.26-macOS-AppleSilicon-testing.dmg",
+    "sha256": "18b0636adb445a19c4a035bf6d8eac232c56a0214524c04d6a8ae02229b27825",
+    "url": "https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.28-macos-testing/Focus-Reader-0.1.28-macOS-AppleSilicon.dmg",
     "notarized": false,
-    "bytes": 93349718,
+    "bytes": 132239046,
     "signature": "ad-hoc",
     "codeProtection": "obfuscated-reading-core"
   },
