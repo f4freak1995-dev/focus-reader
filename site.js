@@ -41,10 +41,28 @@ const captions = english ? {
 };
 // This public illustration uses a simple display rhythm, not the private engine.
 const chineseWords = ["我的", "故事", "总是", "在", "夏天", "开始", "的。", "夏天", "在", "我", "看来", "是", "个", "危险", "的", "季节，", "炎热", "的", "天气", "使", "人群", "比", "其他", "季节", "裸露", "得", "多，", "因此", "很难", "掩饰", "欲望。"];
-const paragraphs = sample ? (english ? [...sample.querySelectorAll('.sample-paragraph')] : [sample]) : [];
+const paragraphNodes = sample ? [...sample.querySelectorAll('.sample-paragraph')] : [];
+const paragraphs = sample ? (paragraphNodes.length ? paragraphNodes : [sample]) : [];
+const chineseSegmenter = !english && typeof Intl.Segmenter === 'function'
+  ? new Intl.Segmenter('zh-CN',{granularity:'word'}) : null;
+function chineseDemoWords(text) {
+  if (text === chineseWords.join('')) return chineseWords;
+  const result = [];
+  const segments = chineseSegmenter ? [...chineseSegmenter.segment(text)].map(part => part.segment) : Array.from(text);
+  let opening = '';
+  segments.forEach(segment => {
+    if (/^[“‘「『（([{《〈]+$/u.test(segment)) { opening += segment; return; }
+    if (/^[\p{P}\p{Z}\s]+$/u.test(segment) && result.length && !opening) {
+      result[result.length - 1] += segment;
+    } else { result.push(opening + segment); opening = ''; }
+  });
+  if (opening) { if (result.length) result[result.length - 1] += opening; else result.push(opening); }
+  return result;
+}
 const records = [];
 paragraphs.forEach((paragraph, paragraphIndex) => {
-  const words = english ? paragraph.textContent.trim().match(/\S+\s*/g) || [] : chineseWords;
+  const text = paragraph.textContent.trim();
+  const words = english ? text.match(/\S+\s*/g) || [] : chineseDemoWords(text);
   words.forEach(text => records.push({text, paragraphIndex}));
 });
 const focusTokens = [];

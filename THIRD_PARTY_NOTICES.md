@@ -80,7 +80,7 @@ Unicode, Inc.，Unicode License V3（完整许可见 `unicode-license.txt`）。
 
 ## 官网文学阅读示例（2026-10-07）
 
-- 中文：王朔《动物凶猛》，关于夏天的两句短节选，共54字符。原作版权归原权利人；本项目不声明其为公版，不提供小说全文或电影台词。书籍信息与作者、出版社记录：<https://opac.uibe.edu.cn/opac/book/7332062c96f7b9ac495d5353db7b7476>。
+- 中文：王朔《动物凶猛》关于夏天的两句原著短引，共54字符。后续691字为Focus Reader编写的原创场景概述，围绕青春、北京大院与回忆的复杂性，用于长段阅读演示；页面明确标注“原著短引＋原创场景概述”，不是王朔原文或小说续作。原著版权归原权利人，原创概述也不使本项目获得原著版权。书籍信息：<https://opac.uibe.edu.cn/opac/book/7332062c96f7b9ac495d5353db7b7476>。评论线索：<https://book.douban.com/review/2094761/>、<https://www.thepaper.cn/newsDetail_forward_13975898>、<https://www.sohu.com/a/872400806_121124790>；未复制评论文章正文。
 - 英文：Douglas Adams, *The Hitchhiker's Guide to the Galaxy* (1979)。按用户本轮要求，从其此前提供的EPUB选取手动控制场景321词用于连续阅读演示，将该文件的硬换行按完整句重排为9个段组。原作版权归原权利人；用户提供文件、原文可访问或本次展示均不意味着本项目拥有原作版权或获得全文再分发许可。书籍介绍：<https://penguinrandomhousesecondaryeducation.com/book/?isbn=9780345418913>。不提供整本电子书或私人书库下载。
 
 中文与英文采用不同书籍，是本地化的编辑示例，互相不构成翻译。四模式播放为交互示意，不加载客户端私有词库或真实时长公式。

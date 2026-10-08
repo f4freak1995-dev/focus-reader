@@ -36,7 +36,7 @@
       <div class="reader-demo" aria-label="阅读界面交互示意">
         <div class="demo-top"><span><i class="window-dot"></i><i class="window-dot"></i><i class="window-dot"></i></span><span>Focus Reader</span><span class="demo-top-right">阅读示意</span></div>
         <div class="demo-inner">
-          <div class="demo-meta"><span data-sample-slot="author">王朔</span><a data-sample-slot="source" href="https://opac.uibe.edu.cn/opac/book/7332062c96f7b9ac495d5353db7b7476">书籍信息</a></div>
+          <div class="demo-meta"><span data-sample-slot="author">原著：王朔</span><a data-sample-slot="source" href="https://opac.uibe.edu.cn/opac/book/7332062c96f7b9ac495d5353db7b7476">书籍信息</a></div>
           <div class="tabs" role="tablist" aria-label="体验四种阅读模式">
             <button id="tab-normal" role="tab" aria-selected="true" aria-controls="reading-panel" tabindex="0" data-mode="normal">普通</button>
             <button id="tab-color" role="tab" aria-selected="false" aria-controls="reading-panel" tabindex="-1" data-mode="color">色块</button>
@@ -44,9 +44,17 @@
             <button id="tab-focus" role="tab" aria-selected="false" aria-controls="reading-panel" tabindex="-1" data-mode="focus">焦点</button>
           </div>
           <div id="reading-panel" class="page-text normal" role="tabpanel" aria-labelledby="tab-normal" tabindex="0">
-            <p class="chapter-label" data-sample-slot="edition">小说短节选</p>
-            <h2 data-sample-slot="title">动物凶猛</h2>
-            <div class="sample" data-sample-slot="text"><span class="s1">我的故事总是在夏天开始的。</span><span class="s2">夏天在我看来是个危险的季节，炎热的天气使人群比其他季节裸露得多，因此很难掩饰欲望。</span></div>
+            <p class="chapter-label" data-sample-slot="edition">原著短引＋原创场景概述</p>
+            <h2 data-sample-slot="title">动物凶猛：夏天与青春</h2>
+            <div class="sample" data-sample-slot="text">
+<p class="sample-paragraph"><span class="s1">我的故事总是在夏天开始的。</span><span class="s2">夏天在我看来是个危险的季节，炎热的天气使人群比其他季节裸露得多，因此很难掩饰欲望。</span></p>
+<p class="sample-paragraph"><span class="s1">《动物凶猛》把读者带回一群北京大院少年的青春。</span><span class="s2">城市里的街道、学校和住宅，让他们获得了各自不同的活动空间。</span><span class="s3">离开教室之后，他们可以四处游荡，遇见朋友，也寻找让日子变得刺激的事情。</span><span class="s1">夏天为这些经历提供了明亮的背景，却没有替他们分清好奇、冲动与伤害。</span></p>
+<p class="sample-paragraph"><span class="s1">在同伴面前，少年总想显得大胆。</span><span class="s2">他希望得到认可，于是把逞强当成勇敢，把别人的喝彩当成自己的证明。</span><span class="s3">友谊给了他归属，也带来了压力：一旦大家都在看，他便很难承认害怕，更难停下来判断眼前的事情。</span><span class="s1">那些看似自由的行动，有时仍受另一种规矩支配。</span></p>
+<p class="sample-paragraph"><span class="s1">米兰进入他的视野之后，许多平常的细节获得了新的意义。</span><span class="s2">一次相遇、一个动作、几句谈话，都可能被他反复想起。</span><span class="s3">但读者能够看见，他对她的认识并不完整。</span><span class="s1">那些强烈的感受，有一部分来自真实的接触，也有一部分来自他的想象；他越是确信，事实与愿望的距离就越值得追问。</span></p>
+<p class="sample-paragraph"><span class="s1">小说中的回忆不是一份可以逐项核对的记录。</span><span class="s2">讲述者选择哪些事情留下，又让哪些事情模糊，都影响着我们看见的青春。</span><span class="s3">他会重新解释当时的行为，也可能在讲述中为自己寻找理由。</span><span class="s1">读到这里，重要的不只是后来发生了什么，还有他为什么要这样讲，以及我们为什么愿意相信。</span></p>
+<p class="sample-paragraph"><span class="s1">时间过去后，昔日的同伴已经进入各自的成年生活。</span><span class="s2">重新相见时，熟悉的名字并不能立即消除陌生感。</span><span class="s3">大家还记得同一段岁月，却未必记得相同的细节，更未必认得出当年的自己。</span><span class="s1">过去因重逢而显得鲜明，也因眼前这些变化而显得遥远。</span></p>
+<p class="sample-paragraph"><span class="s1">这段青春之所以引人回望，不只因为它明亮或热闹。</span><span class="s2">欲望、嫉妒、虚荣与不安也在其中，和友谊、期待交织在一起。</span><span class="s3">王朔让这些感受保留了复杂的面貌。</span><span class="s1">读者既能理解少年想成为某种人物的渴望，也能看见那种渴望如何让他误认自己、误认他人。</span></p>
+</div>
             <div class="word-stage" hidden><span class="word-label">当前词组</span><strong id="current-word" data-sample-slot="firstWord">我的</strong></div>
             <div class="focus-line" hidden></div>
 
@@ -57,7 +65,7 @@
             <button id="restart-demo" class="demo-restart" type="button" aria-label="从头阅读">↺</button>
             <label class="demo-speed"><span>速度</span><select id="demo-speed"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
           </div>
-          <div class="demo-progress"><input id="demo-seek" type="range" min="0" max="30" step="1" value="0" aria-label="示例阅读位置" disabled><span id="demo-location" data-sample-slot="progress">词组示意 1 / 31</span></div>
+          <div class="demo-progress"><input id="demo-seek" type="range" min="0" max="30" step="1" value="0" aria-label="示例阅读位置" disabled><span id="demo-location" data-sample-slot="progress">连续阅读示例</span></div>
         </div>
         <p class="demo-disclaimer">交互示意，非应用截图。播放间隔不代表实测阅读时长。</p>
       </div>
