@@ -1294,3 +1294,41 @@ summary {
 /* Literary attribution is separate from the shared reading sample. */
 .demo-meta {align-items:center;flex-wrap:wrap;}
 .demo-meta a {text-decoration:underline;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center;}
+
+/* Continuous reading demo: the text is the primary interactive surface. */
+.reader-demo .page-text {height:430px;min-height:430px;padding-block:18px 12px;}
+.reader-demo .chapter-label {margin-bottom:5px;}
+.reader-demo .page-text h2 {font-size:23px;margin-bottom:20px;flex-shrink:0;}
+.reader-demo .sample,.reader-demo .focus-line {font-size:18px;line-height:2;scrollbar-gutter:stable;overscroll-behavior:contain;padding:8px 8px 22px;}
+.sample-paragraph,.focus-paragraph {margin:0 0 1em;}
+.focus-paragraph:last-child,.sample-paragraph:last-child {margin-bottom:0;}
+.reader-demo .focus-token {font:inherit;color:inherit;display:inline-block;white-space:pre;padding:0 1px;margin:0;border:0;border-radius:0;background:none;transform:none;transition:none;vertical-align:baseline;}
+.reader-demo .focus-token.is-current {transform:none;background:none;color:inherit;}
+.focus-glyph {display:inline-block;white-space:pre;border-radius:3px;transform-origin:50% 60%;transition:transform 150ms ease-out,background-color 150ms ease-out;}
+.focus-token.is-current .focus-glyph {background:var(--soft);color:var(--green);box-shadow:0 2px 0 var(--green);transform:scale(1.18);}
+.focus-token.is-before .focus-glyph {transform:translateX(-4px);}
+.focus-token.is-after .focus-glyph {transform:translateX(4px);}
+.focus-token:hover .focus-glyph {background:var(--soft);}
+.demo-hint {min-height:38px;font-size:12px;color:var(--muted);line-height:1.7;margin:8px 0 14px;}
+.demo-controls {display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.demo-controls .play {min-height:46px;padding:9px 24px;font-size:14px;background:var(--green);color:var(--panel);border-color:var(--green);}
+.demo-restart {width:44px;min-height:44px;border:1px solid var(--line);background:transparent;border-radius:5px;font-size:23px;}
+.demo-speed {display:flex;align-items:center;gap:8px;margin-left:auto;color:var(--muted);font-size:12px;}
+.demo-speed select {min-height:44px;padding:6px 8px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px;font:inherit;}
+#demo-seek {min-width:0;flex:1;width:100%;height:28px;margin:0;accent-color:var(--green);cursor:pointer;}
+#demo-location {white-space:nowrap;min-width:65px;text-align:right;}
+select:focus-visible,input:focus-visible {outline:2px solid var(--green);outline-offset:4px;}
+@media(max-width:760px) {
+  .reader-demo .page-text {height:400px;min-height:400px;}
+  .reader-demo .sample,.reader-demo .focus-line {font-size:17px;}
+  .demo-controls .play {padding-inline:18px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .focus-glyph {transition:none!important;transform:none!important;}
+}
+
+@media(max-width:390px) {
+  .demo-speed span {position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;}
+  .demo-speed {gap:0;}
+  .demo-controls .play {font-size:13px;padding-inline:14px;}
+}

@@ -15,18 +15,9 @@ ASSETS = {'styles.css', 'site.js', 'language.js', 'icon.svg', 'LICENSE.txt',
           'THIRD_PARTY_NOTICES.md', 'DEPENDENCY_LICENSES.txt'}
 CJK = re.compile(r'[\u3400-\u9fff]')
 
-# Editorial examples differ by language; they are not translations of each other.
-# Only the brief two-line dialogue is quoted, not the surrounding passage.
-ENGLISH_SAMPLE = {
-    'title': "The Hitchhiker's Guide to the Galaxy",
-    'author': 'Douglas Adams',
-    'edition': '1979 · Brief quotation',
-    'source': 'About the book',
-    'source_url': 'https://penguinrandomhousesecondaryeducation.com/book/?isbn=9780345418913',
-    'text': ('\"OK computer, I want full manual control now.\"', '\"You got it,\" said the computer.'),
-    'firstWord': '\"OK',
-    'progress': 'Demo group 1 / 14',
-}
+# Localized editorial excerpts are independent of the UI translation table.
+ENGLISH_SAMPLE = json.loads((ROOT / 'scripts' / 'english-reading-sample.json').read_text(encoding='utf-8'))
+
 
 def translate(value):
     key = value.strip()
@@ -71,8 +62,16 @@ class EnglishPage(HTMLParser):
         slot = dict(attrs).get('data-sample-slot')
         if slot:
             if slot == 'text':
-                value = ' '.join(f'<span class="s{n + 1}">{escape(sentence, quote=False)}</span>'
-                                 for n, sentence in enumerate(ENGLISH_SAMPLE[slot]))
+                paragraphs = []
+                sentence_index = 0
+                for paragraph in ENGLISH_SAMPLE[slot]:
+                    sentences = re.findall(r'.+?(?:[.!?][\"”]?(?=\s|$)|$)', paragraph)
+                    spans = []
+                    for sentence in sentences:
+                        spans.append(f'<span class="s{sentence_index % 3 + 1}">{escape(sentence, quote=False)}</span>')
+                        sentence_index += 1
+                    paragraphs.append('<p class="sample-paragraph">' + ''.join(spans) + '</p>')
+                value = '\n'.join(paragraphs)
             else:
                 value = escape(ENGLISH_SAMPLE[slot], quote=False)
             self.output.append(value)
@@ -103,7 +102,7 @@ def main():
     for name in ('index.html', 'privacy.html', 'copyright.html', 'third-party.html'):
         page = EnglishPage(name)
         page.feed((ROOT / name).read_text(encoding='utf-8'))
-        content = re.sub(r'(</span>)(<span class="s[123]">)', r'\1 \2', ''.join(page.output))
+        content = ''.join(page.output)
         (ROOT / 'en' / name).write_text(content, encoding='utf-8')
         print(f'Generated en/{name}')
 

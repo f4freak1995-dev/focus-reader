@@ -46,12 +46,18 @@
           <div id="reading-panel" class="page-text normal" role="tabpanel" aria-labelledby="tab-normal" tabindex="0">
             <p class="chapter-label" data-sample-slot="edition">小说短节选</p>
             <h2 data-sample-slot="title">动物凶猛</h2>
-            <p class="sample" data-sample-slot="text"><span class="s1">我的故事总是在夏天开始的。</span><span class="s2">夏天在我看来是个危险的季节，炎热的天气使人群比其他季节裸露得多，因此很难掩饰欲望。</span></p>
+            <div class="sample" data-sample-slot="text"><span class="s1">我的故事总是在夏天开始的。</span><span class="s2">夏天在我看来是个危险的季节，炎热的天气使人群比其他季节裸露得多，因此很难掩饰欲望。</span></div>
             <div class="word-stage" hidden><span class="word-label">当前词组</span><strong id="current-word" data-sample-slot="firstWord">我的</strong></div>
             <div class="focus-line" hidden></div>
-            <div class="page-bottom"><span id="mode-caption" aria-live="polite">像读纸书一样，按自己的节奏翻页。</span><button id="play-demo" class="play" type="button" hidden aria-pressed="false">播放示意</button></div>
+
           </div>
-          <div class="demo-progress"><span class="progress-track" aria-hidden="true"><svg viewBox="0 0 1000 4" preserveAspectRatio="none"><rect width="1000" height="4" class="progress-background"/><rect id="demo-progress-fill" width="18" height="4"/></svg></span><span id="demo-location" data-sample-slot="progress">词组示意 1 / 31</span></div>
+          <p class="demo-hint" id="mode-caption" aria-live="polite">像读纸书一样，按自己的节奏翻页。</p>
+          <div class="demo-controls" hidden>
+            <button id="play-demo" class="play" type="button" aria-pressed="false">开始体验</button>
+            <button id="restart-demo" class="demo-restart" type="button" aria-label="从头阅读">↺</button>
+            <label class="demo-speed"><span>速度</span><select id="demo-speed"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
+          </div>
+          <div class="demo-progress"><input id="demo-seek" type="range" min="0" max="30" step="1" value="0" aria-label="示例阅读位置" disabled><span id="demo-location" data-sample-slot="progress">词组示意 1 / 31</span></div>
         </div>
         <p class="demo-disclaimer">交互示意，非应用截图。播放间隔不代表实测阅读时长。</p>
       </div>

@@ -20,59 +20,135 @@ themeButton?.addEventListener('click', () => {
 
 const tabs = [...document.querySelectorAll('[role=tab][data-mode]')];
 const panel = document.querySelector('#reading-panel');
-const captions = english ? {normal:'Turn the pages at your own pace, as you would with a paper book.',color:'Soft colors mark the boundaries of each sentence.',arsvp:'A word-playback illustration. The app calculates actual candidate timings.',focus:'Emphasize the current word in its sentence, keeping the context.'} : { normal:'像读纸书一样，按自己的节奏翻页。', color:'柔和色块，辅助辨认原句边界。', arsvp:'词组播放示意；实际候选时长由应用确定。', focus:'在原句里强调当前词，保留上下文。' };
 const sample = panel?.querySelector('.sample');
 const stage = panel?.querySelector('.word-stage');
 const focusLine = panel?.querySelector('.focus-line');
 const playButton = document.querySelector('#play-demo');
-// Each language uses one attributed literary sample across all four tabs.
-// No reader dictionary, private timing engine, or book content is loaded here.
+const controls = document.querySelector('.demo-controls');
+const seek = document.querySelector('#demo-seek');
+const speed = document.querySelector('#demo-speed');
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const captions = english ? {
+  normal:'Read the passage at your own pace. Switch modes without losing your place.',
+  color:'Sentence colors keep the boundaries visible as you read.',
+  arsvp:'One word at a time. Pause, change speed, or choose a new position.',
+  focus:'Follow the enlarged word. Click any word to choose your starting point.'
+} : {
+  normal:'按自己的节奏读；切换模式，继续同一个位置。',
+  color:'用颜色辨认句子边界，保留完整原文。',
+  arsvp:'逐词显示，可暂停、调速或拖动进度。',
+  focus:'跟随放大的词阅读；点选任意词，选择起点。'
+};
+// This public illustration uses a simple display rhythm, not the private engine.
 const chineseWords = ["我的", "故事", "总是", "在", "夏天", "开始", "的。", "夏天", "在", "我", "看来", "是", "个", "危险", "的", "季节，", "炎热", "的", "天气", "使", "人群", "比", "其他", "季节", "裸露", "得", "多，", "因此", "很难", "掩饰", "欲望。"];
-if (sample && english) {
-  [...sample.querySelectorAll(':scope > span')].slice(1).forEach(span => { if(!/\s$/.test(span.previousSibling?.textContent || '')) span.before(document.createTextNode(' ')); });
-}
-const words = english ? (sample?.textContent.trim().match(/\S+\s*/g) || []) : chineseWords;
-const focusTokens = words.map((word,n) => {
-  const span=document.createElement('span');span.className='focus-token';span.textContent=word;
-  if(n===0)span.classList.add('is-current');focusLine?.append(span);return span;
+const paragraphs = sample ? (english ? [...sample.querySelectorAll('.sample-paragraph')] : [sample]) : [];
+const records = [];
+paragraphs.forEach((paragraph, paragraphIndex) => {
+  const words = english ? paragraph.textContent.trim().match(/\S+\s*/g) || [] : chineseWords;
+  words.forEach(text => records.push({text, paragraphIndex}));
 });
-let timer = null, index = 0;
-function renderPosition() {
-  const current=document.querySelector('#current-word');if(current)current.textContent=words[index]?.trim() || '';
-  focusTokens.forEach((span,n)=>span.classList.toggle('is-current',n===index));
-  if(focusLine && !focusLine.hidden && focusTokens[index]){
-    const bounds=focusLine.getBoundingClientRect(), active=focusTokens[index].getBoundingClientRect();
-    if(active.bottom>bounds.bottom-8)focusLine.scrollTop+=active.bottom-bounds.bottom+8;
-    else if(active.top<bounds.top+8)focusLine.scrollTop+=active.top-bounds.top-8;
+const focusTokens = [];
+paragraphs.forEach((_, paragraphIndex) => {
+  const paragraph = document.createElement('p');
+  paragraph.className = 'focus-paragraph';
+  records.forEach((record, n) => {
+    if (record.paragraphIndex !== paragraphIndex) return;
+    const slot = document.createElement('button');
+    slot.type = 'button'; slot.className = 'focus-token'; slot.tabIndex = -1;
+    slot.dataset.index = String(n);
+    const glyph = document.createElement('span');
+    glyph.className = 'focus-glyph'; glyph.textContent = record.text;
+    slot.append(glyph); paragraph.append(slot); focusTokens.push(slot);
+  });
+  focusLine?.append(paragraph);
+});
+let timer = null, index = 0, playing = false, activeMode = 'normal', paintedIndex = -1;
+function renderPosition(follow = true) {
+  const current = document.querySelector('#current-word');
+  if (current) current.textContent = records[index]?.text.trim() || '';
+  const active = focusTokens[index];
+  const activeTop = active?.offsetTop;
+  const beforeSharesLine = focusTokens[index - 1]?.offsetTop === activeTop;
+  const afterSharesLine = focusTokens[index + 1]?.offsetTop === activeTop;
+  new Set([paintedIndex - 1,paintedIndex,paintedIndex + 1,index - 1,index,index + 1]).forEach(n => {
+    const slot = focusTokens[n]; if (!slot) return;
+    slot.classList.toggle('is-current',n === index);
+    slot.classList.toggle('is-before',beforeSharesLine && n === index - 1);
+    slot.classList.toggle('is-after',afterSharesLine && n === index + 1);
+  });
+  paintedIndex = index;
+  if (follow && focusLine && !focusLine.hidden && active) {
+    const bounds = focusLine.getBoundingClientRect(), word = active.getBoundingClientRect();
+    if (word.top < bounds.top + 12 || word.bottom > bounds.top + bounds.height * .75) {
+      const target = focusLine.scrollTop + word.top - bounds.top - bounds.height * .35;
+      focusLine.scrollTo({top:Math.max(0,target),behavior:reducedMotion.matches || !playing ? 'instant' : 'smooth'});
+    }
   }
-  const fill=document.querySelector('#demo-progress-fill');fill?.setAttribute('width',String(Math.round(1000*(index+1)/Math.max(1,words.length))));
-  const location=document.querySelector('#demo-location');if(location)location.textContent=english?`Demo group ${index+1} / ${words.length}`:`词组示意 ${index+1} / ${words.length}`;
+  if (seek) {
+    seek.value = String(index);
+    seek.setAttribute('aria-valuetext',`${index + 1} / ${records.length}`);
+  }
+  const location = document.querySelector('#demo-location');
+  if (location) location.textContent = `${index + 1} / ${records.length}`;
 }
 function pause() {
-  if(timer!==null)clearInterval(timer);timer=null;playButton?.setAttribute('aria-pressed','false');
-  if(playButton)playButton.textContent=english?'Play demo':'播放示意';
+  clearTimeout(timer); timer = null; playing = false;
+  playButton?.setAttribute('aria-pressed','false');
+  if (playButton) playButton.textContent = english ? (index === records.length - 1 ? 'Read again' : index > 0 ? 'Continue' : 'Start reading') : (index === records.length - 1 ? '再读一次' : index > 0 ? '继续阅读' : '开始体验');
+}
+function schedule() {
+  const punctuation = /[.!?。！？,，;；]["”’]*\s*$/.test(records[index]?.text || '');
+  timer = setTimeout(() => {
+    if (index >= records.length - 1) { pause(); return; }
+    index += 1; renderPosition(); schedule();
+  }, (320 + (punctuation ? 150 : 0)) / Number(speed?.value || 1));
+}
+function togglePlayback() {
+  if (playing) { pause(); return; }
+  if (!records.length) return;
+  if (index === records.length - 1) index = 0;
+  playing = true; playButton.textContent = english ? 'Pause' : '暂停';
+  playButton.setAttribute('aria-pressed','true'); renderPosition(); schedule();
+}
+function setPosition(next) {
+  pause(); index = Math.max(0,Math.min(records.length - 1,next)); renderPosition(); pause();
 }
 function activate(tab) {
-  pause();const mode=tab.dataset.mode;
-  tabs.forEach(t=>{t.setAttribute('aria-selected',String(t===tab));t.tabIndex=t===tab?0:-1;});
-  panel.className=`page-text ${mode}`;panel.setAttribute('aria-labelledby',tab.id);
-  sample.hidden=mode==='arsvp'||mode==='focus';stage.hidden=mode!=='arsvp';focusLine.hidden=mode!=='focus';
-  playButton.hidden=mode!=='arsvp'&&mode!=='focus';document.querySelector('#mode-caption').textContent=captions[mode];renderPosition();
+  pause(); activeMode = tab.dataset.mode;
+  tabs.forEach(t => { t.setAttribute('aria-selected',String(t === tab)); t.tabIndex = t === tab ? 0 : -1; });
+  panel.className = `page-text ${activeMode}`; panel.setAttribute('aria-labelledby',tab.id);
+  sample.hidden = activeMode === 'arsvp' || activeMode === 'focus';
+  stage.hidden = activeMode !== 'arsvp'; focusLine.hidden = activeMode !== 'focus';
+  controls.hidden = activeMode !== 'arsvp' && activeMode !== 'focus';
+  document.querySelector('#mode-caption').textContent = captions[activeMode]; renderPosition();
 }
-tabs.forEach((tab,i)=>{
- tab.addEventListener('click',()=>activate(tab));
- tab.addEventListener('keydown',event=>{
-  let next;if(event.key==='ArrowRight')next=(i+1)%tabs.length;if(event.key==='ArrowLeft')next=(i+tabs.length-1)%tabs.length;
-  if(event.key==='Home')next=0;if(event.key==='End')next=tabs.length-1;
-  if(next!==undefined){event.preventDefault();activate(tabs[next]);tabs[next].focus();}
- });
+tabs.forEach((tab,i) => {
+  tab.addEventListener('click',() => activate(tab));
+  tab.addEventListener('keydown',event => {
+    let next;
+    if (event.key === 'ArrowRight') next = (i + 1) % tabs.length;
+    if (event.key === 'ArrowLeft') next = (i + tabs.length - 1) % tabs.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = tabs.length - 1;
+    if (next !== undefined) { event.preventDefault(); activate(tabs[next]); tabs[next].focus(); }
+  });
 });
-playButton?.addEventListener('click',()=>{
- if(timer!==null){pause();return;}if(!words.length)return;
- playButton.textContent=english?'Pause demo':'暂停示意';playButton.setAttribute('aria-pressed','true');
- timer=setInterval(()=>{index=(index+1)%words.length;renderPosition();},650);
+playButton?.addEventListener('click',togglePlayback);
+document.querySelector('#restart-demo')?.addEventListener('click',() => setPosition(0));
+speed?.addEventListener('change',() => { if (playing) { clearTimeout(timer); schedule(); } });
+seek?.addEventListener('pointerdown',pause);
+seek?.addEventListener('input',() => setPosition(Number(seek.value)));
+focusLine?.addEventListener('click',event => {
+  const token = event.target.closest('.focus-token');
+  if (token) setPosition(Number(token.dataset.index));
 });
-renderPosition();
+panel?.addEventListener('keydown',event => {
+  if (activeMode !== 'focus' && activeMode !== 'arsvp') return;
+  if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); setPosition(index + (event.key === 'ArrowRight' ? 1 : -1)); }
+  if (event.code === 'Space' && event.target === panel) { event.preventDefault(); togglePlayback(); }
+});
+if (seek) { seek.disabled = false; seek.max = String(Math.max(0,records.length - 1)); }
+if (panel) activate(document.querySelector('#tab-focus'));
 // Deep links reveal the relevant platform instructions, without opening every
 // troubleshooting section for everyone on the landing page.
 function revealInstructions(){
