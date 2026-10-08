@@ -279,5 +279,9 @@
   "开始体验": "Start reading",
   "从头阅读": "Read from the beginning",
   "速度": "Speed",
-  "示例阅读位置": "Position in the reading sample"
+  "示例阅读位置": "Position in the reading sample",
+  "0.1.28 · 测试版": "0.1.28 · Testing",
+  "Windows 64 位 · 约 100 MB": "Windows 64-bit · About 100 MB",
+  "0.1.28 · .exe 安装包": "0.1.28 · .exe installer",
+  "新增六种离线阅读字体：中文宋体、黑体与文楷，英文 Source Serif 4、Literata 与 Atkinson Hyperlegible Next。保留词典、拼音与四种读法。": "Six new offline reading fonts: Chinese Song, Hei and WenKai; English Source Serif 4, Literata and Atkinson Hyperlegible Next. Dictionaries, pinyin and all four reading options remain included."
 }
