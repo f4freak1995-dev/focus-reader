@@ -283,5 +283,15 @@
   "0.1.28 · 测试版": "0.1.28 · Testing",
   "Windows 64 位 · 约 100 MB": "Windows 64-bit · About 100 MB",
   "0.1.28 · .exe 安装包": "0.1.28 · .exe installer",
-  "新增六种离线阅读字体：中文宋体、黑体与文楷，英文 Source Serif 4、Literata 与 Atkinson Hyperlegible Next。保留词典、拼音与四种读法。": "Six new offline reading fonts: Chinese Song, Hei and WenKai; English Source Serif 4, Literata and Atkinson Hyperlegible Next. Dictionaries, pinyin and all four reading options remain included."
+  "新增六种离线阅读字体：中文宋体、黑体与文楷，英文 Source Serif 4、Literata 与 Atkinson Hyperlegible Next。保留词典、拼音与四种读法。": "Six new offline reading fonts: Chinese Song, Hei and WenKai; English Source Serif 4, Literata and Atkinson Hyperlegible Next. Dictionaries, pinyin and all four reading options remain included.",
+  "在自己的节奏里阅读": "A little more room to read",
+  "先翻几页，感受一下。": "Turn a page. Make yourself at home.",
+  "一本书，换一种读法。": "One book. A different way in.",
+  "交互体验": "Try it here",
+  "上一页": "Previous page",
+  "下一页": "Next page",
+  "第 1 页": "Page 1",
+  "点击书页两侧，或用左右方向键翻页。": "Click either page edge, or use the left and right arrow keys.",
+  "在这里试读；在客户端读完整本书。此处为交互示意，播放间隔不代表实测阅读时长。": "A few pages here. The whole book in the app. This is an interactive illustration; playback timing is not a measured reading model.",
+  "在上方切换模式，找到适合此刻的读法。": "Switch modes above and find the pace that feels right."
 }
