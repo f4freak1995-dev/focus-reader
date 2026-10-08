@@ -23,17 +23,20 @@
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="dot"></span> 为专注阅读而作 · 桌面应用</p>
-        <h1 id="hero-title">把注意力，<br>留给<span>文字。</span></h1>
-        <p class="lead">从翻开一页，到专注于一个词。<br>让阅读的节奏，回到自己手中。</p>
-        <div class="hero-actions"><a class="button primary" data-mac-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/Focus-Reader-0.1.26-macOS-AppleSilicon-testing.dmg">下载 Mac 安装包 <span aria-hidden="true">↓</span></a><a class="text-link" href="#install">怎么安装？ <span aria-hidden="true">↓</span></a></div>
-        <p class="hero-note">0.1.26 测试版 · 约 93 MB · 适用于 M 系列 Mac</p>
-        <p class="hero-note">一个安装包，无需注册。首次打开可能有系统提示。</p><a class="text-link other-platform" href="#windows-release">用 Windows？下载 Windows 版</a>
+        <p class="eyebrow">本地阅读器</p>
+        <h1 id="hero-title">读一整页，<br>也专注一个词。</h1>
+        <p class="lead">完整书页与逐词阅读，随时切换。<br>进度、笔记和词典，都留在你的电脑里。</p>
+        <div class="hero-actions">
+          <a class="button primary" data-windows-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/Focus-Reader-0.1.27-Windows-x64-setup.exe">下载 Windows 版 <span aria-hidden="true">↓</span></a>
+          <a class="button secondary" data-mac-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/Focus-Reader-0.1.26-macOS-AppleSilicon-testing.dmg">下载 Mac 版 <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="hero-note">Windows 64 位 / Mac M 系列芯片。词典随应用提供。</p>
+        <a class="text-link" href="#experience">先看看怎么读 <span aria-hidden="true">↗</span></a>
       </div>
       <div class="reader-demo" aria-label="阅读界面交互示意">
         <div class="demo-top"><span><i class="window-dot"></i><i class="window-dot"></i><i class="window-dot"></i></span><span>Focus Reader</span><span class="demo-top-right">阅读示意</span></div>
         <div class="demo-inner">
-          <div class="demo-meta"><span>片刻之间</span><span>原创示例 · 01</span></div>
+          <div class="demo-meta"><span>片刻之间</span><span>原创阅读示例</span></div>
           <div class="tabs" role="tablist" aria-label="体验四种阅读模式">
             <button id="tab-normal" role="tab" aria-selected="true" aria-controls="reading-panel" tabindex="0" data-mode="normal">普通</button>
             <button id="tab-color" role="tab" aria-selected="false" aria-controls="reading-panel" tabindex="-1" data-mode="color">色块</button>
@@ -45,35 +48,57 @@
             <h2>慢下来，读进去。</h2>
             <p class="sample"><span class="s1">窗外的光线慢慢移过书桌。</span><span class="s2">合上杂乱的念头，把目光放在眼前的一行文字上。</span><span class="s3">不必赶到下一页，先让这一句，在心里停留片刻。</span></p>
             <div class="word-stage" hidden><span class="word-label">当前词组</span><strong id="current-word">窗外</strong><span class="word-context">把目光放在眼前的一行文字上。</span></div>
-            <div class="focus-line" hidden><span>让</span> <strong>这一句</strong><span>，在心里停留片刻。</span></div>
-            <div class="page-bottom"><span id="mode-caption">像读纸书一样，按自己的节奏翻页。</span><button id="play-demo" class="play" type="button" hidden aria-pressed="false">播放示意</button></div>
+            <div class="focus-line" hidden></div>
+            <div class="page-bottom"><span id="mode-caption" aria-live="polite">像读纸书一样，按自己的节奏翻页。</span><button id="play-demo" class="play" type="button" hidden aria-pressed="false">播放示意</button></div>
           </div>
-          <div class="demo-progress"><span class="progress-track"><i></i></span><span>01 / 12</span></div>
+          <div class="demo-progress"><span class="progress-track" aria-hidden="true"><svg viewBox="0 0 1000 4" preserveAspectRatio="none"><rect width="1000" height="4" class="progress-background"/><rect id="demo-progress-fill" width="36" height="4"/></svg></span><span id="demo-location">词组示意 1 / 28</span></div>
         </div>
         <p class="demo-disclaimer">交互示意，非应用截图。播放间隔不代表实测阅读时长。</p>
       </div>
     </section>
     <div class="format-strip wrap"><span>打开你的书</span><span>EPUB</span><span>PDF</span><span>TXT</span><span>Markdown</span><span>HTML</span></div>
     <section id="experience" class="section wrap" aria-labelledby="experience-title">
-      <div class="section-heading"><p class="eyebrow">READ AT YOUR OWN PACE</p><h2 id="experience-title">同一本书，<br>四种阅读节奏。</h2><p>在阅读方式之间切换，继续同一个原文位置。<br>轻点上方模式，即可体验示意。</p></div>
+      <div class="section-heading"><p class="eyebrow">阅读方式</p><h2 id="experience-title">同一本书，<br>四种阅读节奏。</h2><p>在阅读方式之间切换，继续同一个原文位置。<br>轻点上方模式，即可体验示意。</p></div>
       <div class="features">
-        <article><span class="feature-no">01 / NORMAL</span><h3>自在地读</h3><p>宽窗口双页，窄窗口单页。目录、搜索、书签与笔记，让长篇阅读有迹可循。</p></article>
-        <article><span class="feature-no">02 / COLOR</span><h3>让句子有层次</h3><p>柔和的逐句色块辅助辨认句子边界，保留整段上下文和原文顺序。</p></article>
-        <article><span class="feature-no">03 / ARSVP</span><h3>跟随词组节奏</h3><p>中文分词、英文词形、姓名修补与候选显示时长，支持个人难词记录。时长仍是可校准的工程参数。</p></article>
-        <article><span class="feature-no">04 / FOCUS</span><h3>把目光放在当下</h3><p>在原句中逐词强调，保留上下文。暂停或切换模式后，继续自己的阅读。</p></article>
+        <article><span class="feature-no">普通阅读</span><h3>自在地读</h3><p>宽窗口双页，窄窗口单页。目录、搜索、书签与笔记，让长篇阅读有迹可循。</p></article>
+        <article><span class="feature-no">句子色块</span><h3>让句子有层次</h3><p>柔和的逐句色块辅助辨认句子边界，保留整段上下文和原文顺序。</p></article>
+        <article><span class="feature-no">ARSVP</span><h3>跟随词组节奏</h3><p>中文分词、英文词形、姓名修补与候选显示时长，支持个人难词记录。时长仍是可校准的工程参数。</p></article>
+        <article><span class="feature-no">Focus</span><h3>把目光放在当下</h3><p>在原句中逐词强调，保留上下文。暂停或切换模式后，继续自己的阅读。</p></article>
       </div>
     </section>
     <section class="library-section">
-      <div class="wrap library-grid"><div><p class="eyebrow">A PLACE FOR YOUR BOOKS</p><h2>给书一个位置。<br>也给自己一点空间。</h2></div><div class="library-copy"><p>首次启动，应用自动建立本地书库和收书文件夹。把书放进去，程序启动或回到书架时会发现并导入新文件。</p><p>相同内容不会重复创建书籍；已有进度和笔记继续保留。原文件与阅读记录分开保存，便于管理和备份。</p><span class="small-label">当前版本本地保存 · 跨设备同步开发中</span></div></div>
+      <div class="wrap library-grid"><div><p class="eyebrow">本地书库</p><h2>给书一个位置。<br>也给自己一点空间。</h2></div><div class="library-copy"><p>首次启动，应用自动建立本地书库和收书文件夹。把书放进去，程序启动或回到书架时会发现并导入新文件。</p><p>相同内容不会重复创建书籍；已有进度和笔记继续保留。原文件与阅读记录分开保存，便于管理和备份。</p><span class="small-label">本地保存。跨设备同步尚未提供。</span></div></div>
     </section>
     <section id="download" class="section wrap" aria-labelledby="download-title">
-      <div class="download-heading"><div><p class="eyebrow">DOWNLOAD &amp; INSTALL</p><h2 id="download-title">一个安装包，<br>三步开始阅读。</h2></div><p>直接点下面的绿色按钮。<br>下载完成后，照着三步操作即可。</p></div>
-      <article class="download-card download-main">
-        <div class="download-intro"><div class="card-top"><span class="platform-icon" aria-hidden="true">⌘</span><span class="pill">0.1.26 · 测试版</span></div><h3>Focus Reader for Mac</h3><p class="platform-detail">适用于 M 系列芯片的 Mac · 约 93 MB</p><p>完整应用已装在这一个文件里，无需另下源码、词典或其他软件。</p><p class="compatibility">不确定芯片？点屏幕左上角  → 关于本机，查看“芯片”。当前 Mac 安装包不适用于 Intel Mac。</p></div>
-        <div class="download-action"><a class="button primary" data-mac-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/Focus-Reader-0.1.26-macOS-AppleSilicon-testing.dmg">下载 Mac 安装包 <span aria-hidden="true">↓</span></a><p class="download-status" id="mac-status">只需下载这一个 .dmg 文件</p><a class="text-link" href="#install">下载以后怎么安装？</a><a class="text-link help-shortcut" href="#mac-open-help">提示无法打开？查看详细教程</a></div>
-        <div id="install" class="install-guide"><h3>下载后，这样安装</h3><ol class="install-steps"><li><span class="step-number" aria-hidden="true">1</span><h4>打开下载的文件</h4><p>在访达的“下载”文件夹中，双击刚下载的 <strong>.dmg</strong> 文件。</p></li><li><span class="step-number" aria-hidden="true">2</span><h4>拖进“应用程序”</h4><p>在打开的窗口里，把 <strong>Focus Reader</strong> 拖到 <strong>Applications（应用程序）</strong> 文件夹。</p></li><li><span class="step-number" aria-hidden="true">3</span><h4>打开，开始阅读</h4><p>从访达的“应用程序”打开 <strong>Focus Reader</strong>。首次启动会自动建立书库。</p></li></ol>
-        <p class="books-tip">以后收书：把书放进 <strong>文稿 → Focus Reader → Books</strong>，启动应用或回到书架时会自动导入。</p></div>
-        <details id="mac-open-help" class="install-help" open>
+      <div class="download-heading"><div><p class="eyebrow">下载安装到你的电脑</p><h2 id="download-title">选好版本，<br>打开就能读。</h2></div><p>下载一个安装包即可。<br>无需另外下载词典或源码。</p></div>
+      <div class="download-platforms">
+        <article class="download-card windows-download" id="windows-release" data-platform="windows">
+          <div class="card-top"><span class="platform-icon" aria-hidden="true">⊞</span><span class="pill">0.1.27 · 测试版</span></div>
+          <h3>Windows</h3><p class="platform-detail">Windows 64 位 · 约 60 MB</p>
+          <p>首次使用引导、中英文词典、拼音与四种读法，包含在这一个安装包里。</p>
+          <a class="button primary" data-windows-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/Focus-Reader-0.1.27-Windows-x64-setup.exe">下载 Windows 安装包 <span aria-hidden="true">↓</span></a>
+          <p class="download-status" id="windows-status">0.1.27 · .exe 安装包</p>
+          <a class="text-link" href="#windows-install">Windows 安装与更新</a>
+          <details class="checksum"><summary>校验与许可（可选）</summary><code id="windows-hash">50075d830ff467c4a71d634f4842d98f9c08872d10078eed18a9a4a5bb893d3d</code><p><a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/SHA256SUMS.txt">下载校验清单</a> · <a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/Focus-Reader-0.1.27-Third-Party-Notices.zip">第三方通知</a></p><p>当前 Windows 测试版未做发布签名。</p></details>
+        </article>
+        <article class="download-card mac-download" data-platform="mac">
+          <div class="card-top"><span class="platform-icon" aria-hidden="true">⌘</span><span class="pill">0.1.26 · 测试版</span></div>
+          <h3>macOS</h3><p class="platform-detail">Apple Silicon · 约 93 MB</p>
+          <p>适用于 M 系列芯片的 Mac。完整应用与词典随包提供；当前不支持 Intel Mac。</p>
+          <a class="button primary" data-mac-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/Focus-Reader-0.1.26-macOS-AppleSilicon-testing.dmg">下载 Mac 安装包 <span aria-hidden="true">↓</span></a>
+          <p class="download-status" id="mac-status">0.1.26 · .dmg 安装包</p>
+          <a class="text-link" href="#mac-install">Mac 安装与首次打开</a>
+          <details class="checksum"><summary>校验与许可（可选）</summary><code id="mac-hash">46694acb97533a082efba105bd6e0d83851840b0fd268b4d8a2ce6a891030dfa</code><p><a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/SHA256SUMS.txt">下载校验清单</a> · <a href="third-party.html">第三方许可</a></p><p>当前 Mac 测试版尚未经过 Apple 公证。</p></details>
+        </article>
+      </div>
+      <div class="installation-guides" id="install">
+        <details class="platform-install" id="windows-install"><summary><span>Windows 安装与更新</span><span aria-hidden="true">+</span></summary><div class="platform-install-content">
+          <ol class="install-steps"><li><span class="step-number" aria-hidden="true">1</span><h4>下载一个安装包</h4><p>点击 Windows 下载按钮，在“下载”文件夹中找到 .exe 文件。</p></li><li><span class="step-number" aria-hidden="true">2</span><h4>双击，按向导安装</h4><p>程序和词典一起安装。已有安装版可用新版安装包更新，无需删除原书库。</p></li><li><span class="step-number" aria-hidden="true">3</span><h4>打开自己的书</h4><p>从桌面或开始菜单打开 Focus Reader，导入书籍，或先试读内置示例。</p></li></ol>
+          <p class="books-tip">首次启动自动建立本地书库，也可以在应用中选择书库目录。</p>
+          <p class="help-reference">若系统提示未知发布者，请先确认安装包来自本页，并核对校验信息。不要关闭系统安全保护。</p>
+        </div></details>
+        <details class="platform-install" id="mac-install"><summary><span>Mac 安装与首次打开</span><span aria-hidden="true">+</span></summary><div class="platform-install-content"><div id="mac-install-steps" class="install-guide"><h3>下载后，这样安装</h3><ol class="install-steps"><li><span class="step-number" aria-hidden="true">1</span><h4>打开下载的文件</h4><p>在访达的“下载”文件夹中，双击刚下载的 <strong>.dmg</strong> 文件。</p></li><li><span class="step-number" aria-hidden="true">2</span><h4>拖进“应用程序”</h4><p>在打开的窗口里，把 <strong>Focus Reader</strong> 拖到 <strong>Applications（应用程序）</strong> 文件夹。</p></li><li><span class="step-number" aria-hidden="true">3</span><h4>打开，开始阅读</h4><p>从访达的“应用程序”打开 <strong>Focus Reader</strong>。首次启动会自动建立书库。</p></li></ol>
+        <p class="books-tip">以后收书：把书放进 <strong>文稿 → Focus Reader → Books</strong>，启动应用或回到书架时会自动导入。</p></div> <details id="mac-open-help" class="install-help">
           <summary>Mac 提示“Apple 无法检查其是否包含恶意软件”？</summary>
           <div class="open-help-content">
             <div class="alert-example" aria-label="无法打开提示的文字示意"><img src="icon.svg" alt="" width="40" height="40"><div><span class="example-label">提示示意</span><p>无法打开“Focus Reader”，因为 Apple 无法检查其是否包含恶意软件。</p></div></div>
@@ -95,13 +120,11 @@
             </div>
             <p class="help-reference">步骤依据 <a href="https://support.apple.com/zh-cn/102445" rel="noopener noreferrer">Apple 官方打开 App 说明</a>。仍无法启动时，<a href="https://github.com/f4freak1995-dev/focus-reader/issues/new" rel="noopener noreferrer">反馈启动问题</a>，附上系统版本、芯片和提示文字；截图请只保留错误窗口并遮盖个人信息。</p>
           </div>
-        </details>
-        <details class="checksum"><summary>文件校验与许可（普通安装无需下载这些文件）</summary><code id="mac-hash">46694acb97533a082efba105bd6e0d83851840b0fd268b4d8a2ce6a891030dfa</code><p><a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/SHA256SUMS.txt">校验清单</a> · <a href="third-party.html">第三方许可</a> · <a href="copyright.html">版权与使用</a>。校验用于核对文件完整性，不替代签名或公证。</p></details>
-      </article>
-      <article class="download-card windows-download"><div class="card-top"><span class="platform-icon" aria-hidden="true">⊞</span><span class="pill">0.1.27 · Alpha</span></div><h3>Windows</h3><p>Windows 0.1.27：新增首次使用引导与双语示例；优化焦点空间和快捷键，保留内置词典、拼音、脚注与页码。</p><p class="platform-detail">0.1.27 · Windows 64 位 · 约 60 MB</p><p>只需下载一个安装包，程序和内置词库都在里面。下载后双击打开，按向导安装即可。无需解压。</p><div id="windows-release"><a class="button primary" data-windows-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/Focus-Reader-0.1.27-Windows-x64-setup.exe">下载 Windows 安装包</a></div><ol class="windows-install-steps"><li>点击上方按钮，下载一个 .exe 文件。</li><li>在浏览器下载列表或“下载”文件夹中，双击安装包。</li><li>完成安装后，打开 Focus Reader，点击“导入书籍”。</li></ol><p>首次打开自动建立本地书库。下方校验和许可附件无需另行下载即可安装。</p><p class="download-status" id="windows-status">公开测试版 · 尚未做 Windows 发布签名</p><details class="checksum"><summary>校验、许可与技术信息（可选）</summary><p>已验证导入、四种阅读模式与重启保存。原创阅读核心采用发布混淆。需要 WebView2，安装向导可能联网补装。</p><code id="windows-hash">50075d830ff467c4a71d634f4842d98f9c08872d10078eed18a9a4a5bb893d3d</code><p><a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/SHA256SUMS.txt">下载校验清单</a> · <a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/Focus-Reader-0.1.27-Third-Party-Notices.zip">第三方通知</a></p></details></article>
-      <p class="download-footnote">当前为公开测试版，尚未通过 Apple 公证；目前没有自动跨设备同步。</p>
+        </details></div></details>
+      </div>
+      <p class="release-boundary">目前提供 Windows 与 Apple Silicon Mac 客户端。移动端、跨设备同步和 OCR 尚未提供。</p>
     </section>
-    <section class="faq wrap section" aria-labelledby="faq-title"><div class="faq-title"><p class="eyebrow">GOOD TO KNOW</p><h2 id="faq-title">开始之前。</h2></div><div class="faq-list">
+    <section class="faq wrap section" aria-labelledby="faq-title"><div class="faq-title"><p class="eyebrow">常见问题</p><h2 id="faq-title">开始之前。</h2></div><div class="faq-list">
       <details><summary>我的书会上传到网上吗？</summary><p>当前应用使用本地书库，没有账号或云同步。本网站不会读取你的书籍，不含追踪脚本；外部托管服务仍会按自身政策记录访问信息。</p></details>
       <details><summary>扫描 PDF 或所有 EPUB 都能完整显示吗？</summary><p>当前没有 OCR。扫描 PDF 可以看原页；复杂排版、脚注和出版样式仍在改进。真正加密的 EPUB 正文也存在限制。</p></details>
       <details><summary>这是一款开源软件吗？</summary><p>目前原创阅读器源码保持非公开。公开网站只提供产品信息、发布说明及许可通知；第三方组件继续遵循各自许可。</p></details>

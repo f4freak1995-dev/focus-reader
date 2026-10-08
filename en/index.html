@@ -23,17 +23,20 @@
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="dot"></span> MADE FOR FOCUSED READING · DESKTOP APP</p>
-        <h1 id="hero-title">Keep your focus<br>on <span>the words.</span></h1>
-        <p class="lead">From turning a page to focusing on a word.<br>Make the rhythm of reading your own.</p>
-        <div class="hero-actions"><a class="button primary" data-mac-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/Focus-Reader-0.1.26-macOS-AppleSilicon-testing.dmg">Download for Mac <span aria-hidden="true">↓</span></a><a class="text-link" href="#install">How to install <span aria-hidden="true">↓</span></a></div>
-        <p class="hero-note">0.1.26 testing · About 93 MB · Apple Silicon Macs</p>
-        <p class="hero-note">One installer. No account needed. macOS may show a first-launch warning.</p><a class="text-link other-platform" href="#windows-release">On Windows? Download the Windows version</a>
+        <p class="eyebrow">A local reading app</p>
+        <h1 id="hero-title">A whole page.<br>A word in focus.</h1>
+        <p class="lead">Switch between full pages and word-by-word reading.<br>Your place, notes, and dictionaries stay on your computer.</p>
+        <div class="hero-actions">
+          <a class="button primary" data-windows-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/Focus-Reader-0.1.27-Windows-x64-setup.exe">Download for Windows <span aria-hidden="true">↓</span></a>
+          <a class="button secondary" data-mac-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/Focus-Reader-0.1.26-macOS-AppleSilicon-testing.dmg">Download for Mac <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="hero-note">Windows 64-bit / Mac with an M-series chip. Dictionaries included.</p>
+        <a class="text-link" href="#experience">Explore the reading modes <span aria-hidden="true">↗</span></a>
       </div>
       <div class="reader-demo" aria-label="Interactive reading illustration">
         <div class="demo-top"><span><i class="window-dot"></i><i class="window-dot"></i><i class="window-dot"></i></span><span>Focus Reader</span><span class="demo-top-right">Reading illustration</span></div>
         <div class="demo-inner">
-          <div class="demo-meta"><span>A quiet moment</span><span>Original sample · 01</span></div>
+          <div class="demo-meta"><span>A quiet moment</span><span>Original reading sample</span></div>
           <div class="tabs" role="tablist" aria-label="Explore four reading modes">
             <button id="tab-normal" role="tab" aria-selected="true" aria-controls="reading-panel" tabindex="0" data-mode="normal">Normal</button>
             <button id="tab-color" role="tab" aria-selected="false" aria-controls="reading-panel" tabindex="-1" data-mode="color">Color</button>
@@ -43,37 +46,59 @@
           <div id="reading-panel" class="page-text normal" role="tabpanel" aria-labelledby="tab-normal" tabindex="0">
             <p class="chapter-label">CHAPTER ONE / A MOMENT OF QUIET</p>
             <h2>Slow down. Read closely.</h2>
-            <p class="sample"><span class="s1">Light from the window slowly crosses the desk. </span><span class="s2">Set your scattered thoughts aside and look at the line in front of you. </span><span class="s3">There is no need to hurry to the next page. Let this sentence stay with you for a moment.</span></p>
+            <p class="sample"><span class="s1">Light from the window slowly crosses the desk. </span> <span class="s2">Set your scattered thoughts aside and look at the line in front of you. </span> <span class="s3">There is no need to hurry to the next page. Let this sentence stay with you for a moment.</span></p>
             <div class="word-stage" hidden><span class="word-label">CURRENT WORD</span><strong id="current-word">Light</strong><span class="word-context">Look at the line in front of you.</span></div>
-            <div class="focus-line" hidden><span>Let </span> <strong>this sentence</strong><span> stay with you for a moment.</span></div>
-            <div class="page-bottom"><span id="mode-caption">Turn the pages at your own pace, as you would with a paper book.</span><button id="play-demo" class="play" type="button" hidden aria-pressed="false">Play demo</button></div>
+            <div class="focus-line" hidden></div>
+            <div class="page-bottom"><span id="mode-caption" aria-live="polite">Turn the pages at your own pace, as you would with a paper book.</span><button id="play-demo" class="play" type="button" hidden aria-pressed="false">Play demo</button></div>
           </div>
-          <div class="demo-progress"><span class="progress-track"><i></i></span><span>01 / 12</span></div>
+          <div class="demo-progress"><span class="progress-track" aria-hidden="true"><svg viewbox="0 0 1000 4" preserveaspectratio="none"><rect width="1000" height="4" class="progress-background"/><rect id="demo-progress-fill" width="36" height="4"/></svg></span><span id="demo-location">Demo group 1 / 28</span></div>
         </div>
         <p class="demo-disclaimer">An interactive illustration, not an app screenshot. Demo intervals are not measured reading times.</p>
       </div>
     </section>
     <div class="format-strip wrap"><span>OPEN YOUR BOOKS</span><span>EPUB</span><span>PDF</span><span>TXT</span><span>Markdown</span><span>HTML</span></div>
     <section id="experience" class="section wrap" aria-labelledby="experience-title">
-      <div class="section-heading"><p class="eyebrow">READ AT YOUR OWN PACE</p><h2 id="experience-title">One book,<br>four ways to read.</h2><p>Switch reading modes and keep your place in the original text.<br>Choose a mode above to try the illustration.</p></div>
+      <div class="section-heading"><p class="eyebrow">Reading modes</p><h2 id="experience-title">One book,<br>four ways to read.</h2><p>Switch reading modes and keep your place in the original text.<br>Choose a mode above to try the illustration.</p></div>
       <div class="features">
-        <article><span class="feature-no">01 / NORMAL</span><h3>Read at ease</h3><p>Two pages in wide windows, one in narrow windows. Contents, search, bookmarks and notes help you find your way through a book.</p></article>
-        <article><span class="feature-no">02 / COLOR</span><h3>See sentence boundaries</h3><p>Soft alternating colors mark sentence boundaries while preserving context and the original text order.</p></article>
-        <article><span class="feature-no">03 / ARSVP</span><h3>Follow the words</h3><p>Chinese segmentation, English word forms, name repair and candidate display durations, with personal difficult-word records. Timings remain adjustable engineering parameters.</p></article>
-        <article><span class="feature-no">04 / FOCUS</span><h3>Focus on the current word</h3><p>Emphasize each word in its original sentence while keeping the context. Pause or switch modes and continue from your place.</p></article>
+        <article><span class="feature-no">Pages</span><h3>Read at ease</h3><p>Two pages in wide windows, one in narrow windows. Contents, search, bookmarks and notes help you find your way through a book.</p></article>
+        <article><span class="feature-no">Sentence colors</span><h3>See sentence boundaries</h3><p>Soft alternating colors mark sentence boundaries while preserving context and the original text order.</p></article>
+        <article><span class="feature-no">ARSVP</span><h3>Follow the words</h3><p>Chinese segmentation, English word forms, name repair and candidate display durations, with personal difficult-word records. Timings remain adjustable engineering parameters.</p></article>
+        <article><span class="feature-no">Focus</span><h3>Focus on the current word</h3><p>Emphasize each word in its original sentence while keeping the context. Pause or switch modes and continue from your place.</p></article>
       </div>
     </section>
     <section class="library-section">
-      <div class="wrap library-grid"><div><p class="eyebrow">A PLACE FOR YOUR BOOKS</p><h2>A place for your books.<br>And a little space for you.</h2></div><div class="library-copy"><p>On first launch, the app creates a local library and a book inbox. Put files there; the app discovers and imports them at startup or when you return to the library.</p><p>Identical content is not imported twice. Existing progress and notes are preserved. Original files and reading records are stored separately for easier management and backup.</p><span class="small-label">LOCAL STORAGE · CROSS-DEVICE SYNC NOT YET AVAILABLE</span></div></div>
+      <div class="wrap library-grid"><div><p class="eyebrow">Your local library</p><h2>A place for your books.<br>And a little space for you.</h2></div><div class="library-copy"><p>On first launch, the app creates a local library and a book inbox. Put files there; the app discovers and imports them at startup or when you return to the library.</p><p>Identical content is not imported twice. Existing progress and notes are preserved. Original files and reading records are stored separately for easier management and backup.</p><span class="small-label">Saved locally. Cross-device sync is not available yet.</span></div></div>
     </section>
     <section id="download" class="section wrap" aria-labelledby="download-title">
-      <div class="download-heading"><div><p class="eyebrow">DOWNLOAD &amp; INSTALL</p><h2 id="download-title">One installer,<br>three steps to reading.</h2></div><p>Choose the green download button below.<br>When the download finishes, follow the three steps.</p></div>
-      <article class="download-card download-main">
-        <div class="download-intro"><div class="card-top"><span class="platform-icon" aria-hidden="true">⌘</span><span class="pill">0.1.26 · Testing</span></div><h3>Focus Reader for Mac</h3><p class="platform-detail">Apple Silicon Macs · About 93 MB</p><p>The complete app is included in this file. No separate source archive or dictionary download is needed.</p><p class="compatibility">Not sure which chip you have? Open  → About This Mac and check Chip. This Mac installer does not support Intel Macs.</p></div>
-        <div class="download-action"><a class="button primary" data-mac-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/Focus-Reader-0.1.26-macOS-AppleSilicon-testing.dmg">Download for Mac <span aria-hidden="true">↓</span></a><p class="download-status" id="mac-status">Just download this one .dmg file</p><a class="text-link" href="#install">How do I install it?</a><a class="text-link help-shortcut" href="#mac-open-help">Can't open the app? See the guide</a></div>
-        <div id="install" class="install-guide"><h3>After downloading, install like this</h3><ol class="install-steps"><li><span class="step-number" aria-hidden="true">1</span><h4>Open the downloaded file</h4><p>In Finder's Downloads folder, double-click the downloaded  <strong>.dmg</strong>  file.</p></li><li><span class="step-number" aria-hidden="true">2</span><h4>Drag it into Applications</h4><p>In the window that opens, drag  <strong>Focus Reader</strong>  into  <strong>Applications</strong>  folder.</p></li><li><span class="step-number" aria-hidden="true">3</span><h4>Open it and start reading</h4><p>Open  <strong>Focus Reader</strong> from Finder's Applications folder. Your local library is created on first launch.</p></li></ol>
-        <p class="books-tip">To add books later, put them in  <strong>Documents → Focus Reader → Books</strong>; they are imported at startup or when you return to the library.</p></div>
-        <details id="mac-open-help" class="install-help" open>
+      <div class="download-heading"><div><p class="eyebrow">Install on your computer</p><h2 id="download-title">Choose your version.<br>Open it and read.</h2></div><p>One installer is all you need.<br>No separate dictionary or source-code download.</p></div>
+      <div class="download-platforms">
+        <article class="download-card windows-download" id="windows-release" data-platform="windows">
+          <div class="card-top"><span class="platform-icon" aria-hidden="true">⊞</span><span class="pill">0.1.27 · Testing</span></div>
+          <h3>Windows</h3><p class="platform-detail">Windows 64-bit · About 60 MB</p>
+          <p>Onboarding, Chinese and English dictionaries, pinyin, and four reading options in one installer.</p>
+          <a class="button primary" data-windows-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/Focus-Reader-0.1.27-Windows-x64-setup.exe">Download for Windows <span aria-hidden="true">↓</span></a>
+          <p class="download-status" id="windows-status">0.1.27 · .exe installer</p>
+          <a class="text-link" href="#windows-install">Install or update on Windows</a>
+          <details class="checksum"><summary>Checksums and licenses (optional)</summary><code id="windows-hash">50075d830ff467c4a71d634f4842d98f9c08872d10078eed18a9a4a5bb893d3d</code><p><a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/SHA256SUMS.txt">Download checksum list</a> · <a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/Focus-Reader-0.1.27-Third-Party-Notices.zip">Third-party notices</a></p><p>This Windows testing build is not Authenticode-signed.</p></details>
+        </article>
+        <article class="download-card mac-download" data-platform="mac">
+          <div class="card-top"><span class="platform-icon" aria-hidden="true">⌘</span><span class="pill">0.1.26 · Testing</span></div>
+          <h3>macOS</h3><p class="platform-detail">Apple Silicon · About 93 MB</p>
+          <p>For Macs with an M-series chip. The app and dictionaries are included; Intel Macs are not currently supported.</p>
+          <a class="button primary" data-mac-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/Focus-Reader-0.1.26-macOS-AppleSilicon-testing.dmg">Download for Mac <span aria-hidden="true">↓</span></a>
+          <p class="download-status" id="mac-status">0.1.26 · .dmg installer</p>
+          <a class="text-link" href="#mac-install">Install and first open on Mac</a>
+          <details class="checksum"><summary>Checksums and licenses (optional)</summary><code id="mac-hash">46694acb97533a082efba105bd6e0d83851840b0fd268b4d8a2ce6a891030dfa</code><p><a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/SHA256SUMS.txt">Download checksum list</a> · <a href="third-party.html">Third-party licenses</a></p><p>This Mac testing build is not Apple-notarized.</p></details>
+        </article>
+      </div>
+      <div class="installation-guides" id="install">
+        <details class="platform-install" id="windows-install"><summary><span>Install or update on Windows</span><span aria-hidden="true">+</span></summary><div class="platform-install-content">
+          <ol class="install-steps"><li><span class="step-number" aria-hidden="true">1</span><h4>Download the installer</h4><p>Click the Windows download button, then find the .exe file in Downloads.</p></li><li><span class="step-number" aria-hidden="true">2</span><h4>Double-click and install</h4><p>The app and dictionaries install together. Update an existing installation without deleting your library.</p></li><li><span class="step-number" aria-hidden="true">3</span><h4>Open your book</h4><p>Open Focus Reader from the desktop or Start menu. Import a book or try the included sample.</p></li></ol>
+          <p class="books-tip">A local library is created on first launch. You can also choose its folder in the app.</p>
+          <p class="help-reference">If the system shows an unknown publisher, confirm that the installer came from this page and check its checksum. Keep system security protections enabled.</p>
+        </div></details>
+        <details class="platform-install" id="mac-install"><summary><span>Install and first open on Mac</span><span aria-hidden="true">+</span></summary><div class="platform-install-content"><div id="mac-install-steps" class="install-guide"><h3>After downloading, install like this</h3><ol class="install-steps"><li><span class="step-number" aria-hidden="true">1</span><h4>Open the downloaded file</h4><p>In Finder's Downloads folder, double-click the downloaded  <strong>.dmg</strong>  file.</p></li><li><span class="step-number" aria-hidden="true">2</span><h4>Drag it into Applications</h4><p>In the window that opens, drag  <strong>Focus Reader</strong>  into  <strong>Applications</strong>  folder.</p></li><li><span class="step-number" aria-hidden="true">3</span><h4>Open it and start reading</h4><p>Open  <strong>Focus Reader</strong> from Finder's Applications folder. Your local library is created on first launch.</p></li></ol>
+        <p class="books-tip">To add books later, put them in  <strong>Documents → Focus Reader → Books</strong>; they are imported at startup or when you return to the library.</p></div> <details id="mac-open-help" class="install-help">
           <summary>Does macOS say Apple cannot check the app for malicious software?</summary>
           <div class="open-help-content">
             <div class="alert-example" aria-label="Illustration of the can&#x27;t-open message"><img src="../icon.svg" alt="" width="40" height="40"><div><span class="example-label">EXAMPLE MESSAGE</span><p>Focus Reader cannot be opened because Apple cannot check it for malicious software.</p></div></div>
@@ -95,13 +120,11 @@
             </div>
             <p class="help-reference">Based on  <a href="https://support.apple.com/en-us/102445" rel="noopener noreferrer">Apple's official guide to opening apps</a>. If the app still won't start, <a href="https://github.com/f4freak1995-dev/focus-reader/issues/new" rel="noopener noreferrer">report a launch issue</a> with your system version, chip and message text. Keep screenshots limited to the error window and hide personal information.</p>
           </div>
-        </details>
-        <details class="checksum"><summary>Checksums and licenses (not required for installation)</summary><code id="mac-hash">46694acb97533a082efba105bd6e0d83851840b0fd268b4d8a2ce6a891030dfa</code><p><a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.26-macos-testing/SHA256SUMS.txt">Checksum list</a> · <a href="third-party.html">Third-party licenses</a> · <a href="copyright.html">Copyright &amp; use</a>. Checksums verify file integrity; they do not replace signing or notarization.</p></details>
-      </article>
-      <article class="download-card windows-download"><div class="card-top"><span class="platform-icon" aria-hidden="true">⊞</span><span class="pill">0.1.27 · Alpha</span></div><h3>Windows</h3><p>Windows 0.1.27 adds optional onboarding and bilingual samples, improves focus-reading space and shortcuts, and retains offline dictionaries, pinyin, footnotes, and page numbers.</p><p class="platform-detail">0.1.27 · Windows 64-bit · About 60 MB</p><p>Download one installer containing the app and built-in dictionaries. Double-click it and follow the installation wizard. No extraction is needed.</p><div id="windows-release"><a class="button primary" data-windows-download href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/Focus-Reader-0.1.27-Windows-x64-setup.exe">Download for Windows</a></div><ol class="windows-install-steps"><li>Click the button above to download one .exe file.</li><li>Double-click the installer in your browser's download list or Downloads folder.</li><li>After installation, open Focus Reader and click Import books.</li></ol><p>Your local library is created on first launch. The checksum and license attachments below are not required to install the app.</p><p class="download-status" id="windows-status">Public testing build · Not Authenticode-signed</p><details class="checksum"><summary>Checksums, licenses and technical details (optional)</summary><p>Import, all four reading modes and saved state after restart have been tested. The original reading core uses production obfuscation. WebView2 is required; the installer may download it if missing.</p><code id="windows-hash">50075d830ff467c4a71d634f4842d98f9c08872d10078eed18a9a4a5bb893d3d</code><p><a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/SHA256SUMS.txt">Download checksum list</a> · <a href="https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.27-windows/Focus-Reader-0.1.27-Third-Party-Notices.zip">Third-party notices</a></p></details></article>
-      <p class="download-footnote">These are public testing builds. The Mac build is not Apple-notarized. Automatic cross-device sync is not available.</p>
+        </details></div></details>
+      </div>
+      <p class="release-boundary">Available for Windows and Apple Silicon Mac. Mobile apps, cross-device sync, and OCR are not available yet.</p>
     </section>
-    <section class="faq wrap section" aria-labelledby="faq-title"><div class="faq-title"><p class="eyebrow">GOOD TO KNOW</p><h2 id="faq-title">Before you begin.</h2></div><div class="faq-list">
+    <section class="faq wrap section" aria-labelledby="faq-title"><div class="faq-title"><p class="eyebrow">Common questions</p><h2 id="faq-title">Before you begin.</h2></div><div class="faq-list">
       <details><summary>Will my books be uploaded?</summary><p>The current app uses a local library, with no account or cloud sync. This website does not read your books or include tracking scripts. External hosting services may record visits under their own policies.</p></details>
       <details><summary>Can it fully display scanned PDFs and every EPUB?</summary><p>OCR is not available. Scanned PDFs can be viewed as original pages. Complex layouts, footnotes and publisher styling are still being improved. Encrypted EPUB content also has limitations.</p></details>
       <details><summary>Is the app open source?</summary><p>The original reader source is currently private. The public website provides product information, release notes and license notices. Third-party components remain under their own licenses.</p></details>

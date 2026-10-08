@@ -25,42 +25,61 @@ const sample = panel?.querySelector('.sample');
 const stage = panel?.querySelector('.word-stage');
 const focusLine = panel?.querySelector('.focus-line');
 const playButton = document.querySelector('#play-demo');
-const words = english ? ['Light','from','the','window','slowly','crosses','the','desk.','Set','your','scattered','thoughts','aside','and','look','at','the','line','in','front','of','you.'] : ['窗外','的','光线','慢慢','移过','书桌。','合上','杂乱','的','念头，','把','目光','放在','眼前','的','一行','文字','上。'];
+// This lightweight illustration uses the same sample across all four tabs.
+// No reader dictionary, private timing engine, or book content is loaded here.
+const chineseWords = ['窗外','的','光线','慢慢','移过','书桌。','合上','杂乱','的','念头，','把','目光','放在','眼前','的','一行','文字','上。','不必','赶到','下一页，','先','让','这一句，','在','心里','停留','片刻。'];
+if (sample && english) {
+  [...sample.querySelectorAll(':scope > span')].slice(1).forEach(span => { if(!/\s$/.test(span.previousSibling?.textContent || '')) span.before(document.createTextNode(' ')); });
+}
+const words = english ? (sample?.textContent.trim().match(/\S+\s*/g) || []) : chineseWords;
+const focusTokens = words.map((word,n) => {
+  const span=document.createElement('span');span.className='focus-token';span.textContent=word;
+  if(n===0)span.classList.add('is-current');focusLine?.append(span);return span;
+});
 let timer = null, index = 0;
+function renderPosition() {
+  const current=document.querySelector('#current-word');if(current)current.textContent=words[index]?.trim() || '';
+  focusTokens.forEach((span,n)=>span.classList.toggle('is-current',n===index));
+  if(focusLine && !focusLine.hidden && focusTokens[index]){
+    const bounds=focusLine.getBoundingClientRect(), active=focusTokens[index].getBoundingClientRect();
+    if(active.bottom>bounds.bottom-8)focusLine.scrollTop+=active.bottom-bounds.bottom+8;
+    else if(active.top<bounds.top+8)focusLine.scrollTop+=active.top-bounds.top-8;
+  }
+  const fill=document.querySelector('#demo-progress-fill');fill?.setAttribute('width',String(Math.round(1000*(index+1)/Math.max(1,words.length))));
+  const location=document.querySelector('#demo-location');if(location)location.textContent=english?`Demo group ${index+1} / ${words.length}`:`词组示意 ${index+1} / ${words.length}`;
+}
 function pause() {
-  if (timer !== null) clearInterval(timer);
-  timer = null;
-  playButton?.setAttribute('aria-pressed','false');
-  if (playButton) playButton.textContent = english ? 'Play demo' : '播放示意';
+  if(timer!==null)clearInterval(timer);timer=null;playButton?.setAttribute('aria-pressed','false');
+  if(playButton)playButton.textContent=english?'Play demo':'播放示意';
 }
 function activate(tab) {
-  pause();
-  const mode = tab.dataset.mode;
-  tabs.forEach(t => { t.setAttribute('aria-selected',String(t === tab)); t.tabIndex = t === tab ? 0 : -1; });
-  panel.className = `page-text ${mode}`;
-  panel.setAttribute('aria-labelledby',tab.id);
-  sample.hidden = mode === 'arsvp' || mode === 'focus';
-  stage.hidden = mode !== 'arsvp';
-  focusLine.hidden = mode !== 'focus';
-  playButton.hidden = mode !== 'arsvp';
-  document.querySelector('#mode-caption').textContent = captions[mode];
+  pause();const mode=tab.dataset.mode;
+  tabs.forEach(t=>{t.setAttribute('aria-selected',String(t===tab));t.tabIndex=t===tab?0:-1;});
+  panel.className=`page-text ${mode}`;panel.setAttribute('aria-labelledby',tab.id);
+  sample.hidden=mode==='arsvp'||mode==='focus';stage.hidden=mode!=='arsvp';focusLine.hidden=mode!=='focus';
+  playButton.hidden=mode!=='arsvp'&&mode!=='focus';document.querySelector('#mode-caption').textContent=captions[mode];renderPosition();
 }
-tabs.forEach((tab, i) => {
-  tab.addEventListener('click',()=>activate(tab));
-  tab.addEventListener('keydown',event=>{
-    let next;
-    if(event.key==='ArrowRight') next=(i+1)%tabs.length;
-    if(event.key==='ArrowLeft') next=(i+tabs.length-1)%tabs.length;
-    if(event.key==='Home') next=0;
-    if(event.key==='End') next=tabs.length-1;
-    if(next !== undefined){event.preventDefault();activate(tabs[next]);tabs[next].focus();}
-  });
+tabs.forEach((tab,i)=>{
+ tab.addEventListener('click',()=>activate(tab));
+ tab.addEventListener('keydown',event=>{
+  let next;if(event.key==='ArrowRight')next=(i+1)%tabs.length;if(event.key==='ArrowLeft')next=(i+tabs.length-1)%tabs.length;
+  if(event.key==='Home')next=0;if(event.key==='End')next=tabs.length-1;
+  if(next!==undefined){event.preventDefault();activate(tabs[next]);tabs[next].focus();}
+ });
 });
 playButton?.addEventListener('click',()=>{
-  if(timer !== null){pause();return;}
-  playButton.textContent=english ? 'Pause demo' : '暂停示意';playButton.setAttribute('aria-pressed','true');
-  timer=setInterval(()=>{index=(index+1)%words.length;document.querySelector('#current-word').textContent=words[index];},650);
+ if(timer!==null){pause();return;}if(!words.length)return;
+ playButton.textContent=english?'Pause demo':'暂停示意';playButton.setAttribute('aria-pressed','true');
+ timer=setInterval(()=>{index=(index+1)%words.length;renderPosition();},650);
 });
+renderPosition();
+// Deep links reveal the relevant platform instructions, without opening every
+// troubleshooting section for everyone on the landing page.
+function revealInstructions(){
+ const target=location.hash?document.getElementById(location.hash.slice(1)):null;if(!target)return;
+ let node=target;while(node){if(node instanceof HTMLDetailsElement)node.open=true;node=node.parentElement;}
+}
+window.addEventListener('hashchange',revealInstructions);revealInstructions();
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
 window.addEventListener('pagehide',pause);
 
@@ -82,3 +101,10 @@ async function loadRelease() {
   } catch { /* Static platform information remains readable offline. */ }
 }
 if(panel)void loadRelease();
+
+// Local OS hint only: no IP lookup, high-entropy device query, or tracking.
+const os=navigator.userAgentData?.platform || navigator.platform || '';
+const preferred=/Mac/i.test(os)?'mac':/Win/i.test(os)?'windows':null;
+if(preferred)document.querySelectorAll('.hero-actions .button').forEach(link=>{
+ const match=link.hasAttribute(`data-${preferred}-download`);link.classList.toggle('primary',match);link.classList.toggle('secondary',!match);
+});

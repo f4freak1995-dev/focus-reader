@@ -61,7 +61,8 @@ def main():
     for name in ('index.html', 'privacy.html', 'copyright.html', 'third-party.html'):
         page = EnglishPage(name)
         page.feed((ROOT / name).read_text(encoding='utf-8'))
-        (ROOT / 'en' / name).write_text(''.join(page.output), encoding='utf-8')
+        content = re.sub(r'(</span>)(<span class="s[123]">)', r'\1 \2', ''.join(page.output))
+        (ROOT / 'en' / name).write_text(content, encoding='utf-8')
         print(f'Generated en/{name}')
 
 if __name__ == '__main__': main()
