@@ -295,5 +295,10 @@
   "Apple Silicon · 约 132 MB": "Apple Silicon · About 132 MB",
   "0.1.30 · 测试版": "0.1.30 · Testing",
   "0.1.30 · .exe 安装包": "0.1.30 · .exe installer",
-  "改进批量导入、系统打开文件和阅读位置保护；保留离线词典、拼音与四种读法。": "Improved batch imports, system file opening and reading position protection. Offline dictionaries, pinyin and all four reading modes remain included."
+  "改进批量导入、系统打开文件和阅读位置保护；保留离线词典、拼音与四种读法。": "Improved batch imports, system file opening and reading position protection. Offline dictionaries, pinyin and all four reading modes remain included.",
+  "0.1.31 · 测试版": "0.1.31 · Testing",
+  "0.1.31 · .exe 安装包": "0.1.31 · .exe installer",
+  "启动后后台检查新版本，有更新时提示前往下载；不会自动下载安装。保留离线词典、拼音与四种读法。": "Checks for updates in the background after launch and offers a download link when available; it does not download or install automatically. Offline dictionaries, pinyin and all four reading modes remain included.",
+  "更新日期：2026 年 11 月 2 日。本说明针对本网站及当前本地版本；未来同步功能需另行披露数据范围和服务。": "Updated November 2, 2026. This notice covers this website and the current local builds; any future sync feature requires separate disclosure of data handling and services.",
+  "Windows 0.1.31 测试版启动后会在后台访问官网版本清单，检查是否有更新，不发送书籍、路径、阅读进度或笔记；GitHub Pages 仍可看到正常网络连接信息，例如 IP 地址和 User-Agent。检查失败不妨碍离线阅读，应用不会自动下载安装更新。": "After launch, the Windows 0.1.31 testing build checks the website version manifest in the background. It does not send books, paths, reading progress or notes; GitHub Pages can still see ordinary connection information such as the IP address and User-Agent. A failed check does not prevent offline reading, and the app does not download or install updates automatically."
 }

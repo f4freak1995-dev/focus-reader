@@ -13,15 +13,15 @@
     "codeProtection": "obfuscated-reading-core"
   },
   "windows": {
-    "version": "0.1.30",
+    "version": "0.1.31",
     "status": "published",
     "architecture": "x86_64",
-    "sha256": "6e5656cba5ea7e7ca6cdfae55f0e7b473b1996ee5f3c1fb685712c6090c4535d",
-    "url": "https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.30-windows-testing/Focus-Reader-0.1.30-Windows-x64-setup.exe",
+    "sha256": "af605dd67238ee6f8cfd4c017408649283f6216f0482db8d20a34ce69a9ec3a7",
+    "url": "https://github.com/f4freak1995-dev/focus-reader/releases/download/v0.1.31-windows-testing/Focus-Reader-0.1.31-Windows-x64-setup.exe",
     "signed": false,
     "codeProtection": "obfuscated-reading-core",
     "libraryEncryption": false,
-    "bytes": 99671801
+    "bytes": 99679422
   },
   "crossDeviceSync": {
     "status": "not-implemented"
