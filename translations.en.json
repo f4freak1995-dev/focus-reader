@@ -292,5 +292,8 @@
   "在这里试读；在客户端读完整本书。此处为交互示意，播放间隔不代表实测阅读时长。": "A few pages here. The whole book in the app. This is an interactive illustration; playback timing is not a measured reading model.",
   "在上方切换模式，找到适合此刻的读法。": "Switch modes above and find the pace that feels right.",
   "0.1.28 · .dmg 安装包": "0.1.28 · .dmg installer",
-  "Apple Silicon · 约 132 MB": "Apple Silicon · About 132 MB"
+  "Apple Silicon · 约 132 MB": "Apple Silicon · About 132 MB",
+  "0.1.30 · 测试版": "0.1.30 · Testing",
+  "0.1.30 · .exe 安装包": "0.1.30 · .exe installer",
+  "改进批量导入、系统打开文件和阅读位置保护；保留离线词典、拼音与四种读法。": "Improved batch imports, system file opening and reading position protection. Offline dictionaries, pinyin and all four reading modes remain included."
 }
